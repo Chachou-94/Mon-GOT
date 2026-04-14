@@ -164,7 +164,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.3rem,4vw,2.7rem);colo
 .maphint{padding:1.3rem 1rem;font-style:italic;color:rgba(242,228,192,.24);font-size:.84rem}
 .mapc-loc-header{padding:.6rem .85rem .4rem;border-bottom:1px solid var(--border);background:rgba(0,0,0,.2);position:sticky;top:0;z-index:1}
 .mapc-loc-name{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
-.mapleg{position:absolute;bottom:1rem;left:1rem;background:rgba(8,16,12,.9);border:1px solid var(--border);padding:.58rem .82rem;backdrop-filter:blur(4px);border-radius:1px}
+.mapleg{position:absolute;bottom:.6rem;left:.6rem;background:rgba(8,16,12,.9);border:1px solid var(--border);padding:.58rem .82rem;backdrop-filter:blur(4px);border-radius:1px}
 .leg-t{font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-d);margin-bottom:.4rem}
 .leg-i{display:flex;align-items:center;gap:.4rem;margin-bottom:.2rem;font-size:.72rem;color:rgba(245,228,192,.48)}
 .leg-d{width:8px;height:8px;border-radius:50%}
@@ -576,6 +576,15 @@ textarea.avis-input{resize:vertical;min-height:90px}
 .gdn-legend{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.2rem;justify-content:center}
 .gdn-leg{display:flex;align-items:center;gap:.35rem;font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,228,192,.38)}
 .gdn-ldot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+
+/* Maison Frey */
+.h-Frey{background:rgba(90,70,40,.25);border:1px solid rgba(140,110,60,.4);color:#c8a870}
+/* Bannière résumé maison */
+.house-banner{margin:0 1.4rem 1rem;padding:.9rem 1.2rem;border-radius:2px;border-left:3px solid;background:rgba(0,0,0,.25);animation:fadeUp .3s ease}
+.house-banner-name{font-family:'Cinzel Decorative',serif;font-size:1rem;margin-bottom:.18rem}
+.house-banner-words{font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;opacity:.55;margin-bottom:.5rem;font-style:italic}
+.house-banner-desc{font-size:.87rem;line-height:1.55;color:rgba(242,228,192,.62)}
+.house-banner-seat{font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;opacity:.4;margin-top:.3rem}
 </style>
 </head>
 <body>
@@ -647,11 +656,11 @@ textarea.avis-input{resize:vertical;min-height:90px}
       <button class="pill" data-h="Tyrell" onclick="fH(this)">Tyrell</button>
       <button class="pill" data-h="Greyjoy" onclick="fH(this)">Greyjoy</button>
       <button class="pill" data-h="Martell" onclick="fH(this)">Martell</button>
+      <button class="pill" data-h="Frey" onclick="fH(this)">Frey</button>
       <button class="pill" data-h="GardeNuit" onclick="fH(this)">Garde de Nuit</button>
       <button class="pill" data-h="FeuSang" onclick="fH(this)">Feu &amp; Sang</button>
       <button class="pill" data-h="HotD" onclick="fH(this)">House of the Dragon</button>
       <button class="pill" data-h="ChevErrant" onclick="fH(this)">Chev. Errant</button>
-      <button class="pill" data-h="Sauvageons" onclick="fH(this)">Sauvageons</button>
       <button class="pill" data-h="Autre" onclick="fH(this)">Autres</button>
     </div>
     <div class="ctr" id="ctr"></div>
@@ -668,55 +677,183 @@ textarea.avis-input{resize:vertical;min-height:90px}
         <defs>
           <radialGradient id="sg" cx="25%" cy="35%"><stop offset="0%" stop-color="#0d1820"/><stop offset="100%" stop-color="#06100d"/></radialGradient>
           <filter id="gf" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="6"/></filter>
+          <linearGradient id="riverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="rgba(80,140,180,0.55)"/>
+            <stop offset="100%" stop-color="rgba(60,110,150,0.35)"/>
+          </linearGradient>
         </defs>
         <rect width="620" height="900" fill="url(#sg)"/>
-        <g stroke="rgba(50,110,130,0.055)" stroke-width="1" fill="none">
+        <g stroke="rgba(50,110,130,0.045)" stroke-width="1" fill="none">
           <path d="M0 130 Q160 116 320 130 T640 130"/><path d="M0 260 Q160 246 320 260 T640 260"/>
           <path d="M0 490 Q160 476 320 490 T640 490"/><path d="M0 730 Q160 716 320 730 T640 730"/>
           <path d="M450 0 Q436 200 450 400 T450 800"/><path d="M530 0 Q516 200 530 400 T530 800"/>
         </g>
-        <!-- Westeros body -->
-        <path d="M200,32 L220,26 L248,19 L276,17 L300,22 L320,30 L336,41 L350,54 L356,68 L352,84 L343,97 L341,112 L349,127 L357,143 L360,160 L354,176 L348,191 L349,208 L354,226 L354,244 L347,260 L339,276 L335,292 L339,309 L342,327 L337,343 L328,358 L322,374 L320,391 L317,408 L310,423 L302,438 L295,453 L291,469 L289,486 L291,502 L295,518 L292,534 L284,548 L272,561 L258,570 L243,574 L228,570 L216,562 L205,549 L197,534 L190,518 L183,501 L175,484 L167,466 L159,448 L151,430 L143,411 L136,392 L129,373 L123,354 L119,334 L117,314 L119,294 L121,274 L119,254 L115,234 L112,214 L114,194 L118,174 L125,155 L133,137 L142,120 L151,103 L160,87 L170,71 L180,57 L190,44 L199,34 Z" fill="#283520" stroke="#3a4828" stroke-width="1.5"/>
-        <path d="M200,32 L199,34 L190,44 L178,44 L163,37 L147,28 L130,19 L114,10 L104,3 L120,0 L148,0 L176,0 L196,7 L210,17 L220,26 Z" fill="#223018" stroke="#3a4828" stroke-width="1.2"/>
-        <!-- Wall -->
-        <rect x="114" y="48" width="242" height="7" fill="#b8d4e8" opacity="0.55" rx="2"/>
+
+        <!-- ══ WESTEROS CONTINENT — côtes affinées ══ -->
+        <!-- Corps principal -->
+        <path d="M200,32 L220,26 L248,19 L276,17 L300,22 L320,30 L336,41 L350,54 L356,68
+                 L352,84 L343,97 L341,112 L349,127 L357,143 L361,160 L356,176 L349,191
+                 L348,208 L353,226 L354,244 L347,260 L339,276 L336,292
+                 L340,305 L344,318 L346,332
+                 Q350,340 358,345 Q368,350 372,358
+                 L368,372 L360,382 L350,390 L340,398 L330,408 L320,420
+                 L312,432 L305,445 L299,458 L294,472 L291,487 L290,502
+                 L293,516 L290,530 L283,543 L273,556 L260,566 L246,572
+                 L232,570 L220,564 L210,554 L202,542 L196,528 L190,514
+                 L184,499 L177,483 L170,467 L162,450 L155,433 L148,415
+                 L141,397 L135,379 L129,361 L124,342 L120,323 L118,304
+                 L119,285 L121,266 L120,247 L116,228 L112,209 L113,190
+                 L117,171 L124,153 L133,136 L142,119 L151,103 L161,88
+                 L170,72 L180,57 L190,44 L199,34 Z"
+              fill="#283520" stroke="#3a4828" stroke-width="1.5"/>
+
+        <!-- Péninsule nord-ouest (au-delà du Mur) -->
+        <path d="M200,32 L199,34 L190,44 L178,44 L163,37 L147,28 L130,19
+                 L114,10 L104,3 L120,0 L148,0 L176,0 L196,7 L210,17 L220,26 Z"
+              fill="#223018" stroke="#3a4828" stroke-width="1.2"/>
+
+        <!-- Baie de la Néra — intégrée dans le contour du continent -->
+        <!-- Remplissage eau dans l'échancrure -->
+        <path d="M344,318 Q338,322 328,322 Q318,322 312,328 Q306,334 306,342 Q306,350 312,358 Q318,364 328,366 Q338,366 344,362 L390,362 L390,318 Z"
+              fill="#08131e" stroke="none" opacity="0.85"/>
+        <text x="362" y="342" font-family="Cinzel,serif" font-size="5.5" fill="rgba(90,150,180,0.5)" text-anchor="middle">Baie de la Néra</text>
         <text x="235" y="44" font-family="Cinzel,serif" font-size="7.5" fill="rgba(184,212,232,0.62)" text-anchor="middle">— LE MUR —</text>
-        <!-- Iron Islands -->
+
+        <!-- Îles de Fer -->
         <ellipse cx="76" cy="291" rx="14" ry="8" fill="#283520" stroke="#3a4828" stroke-width="1"/>
         <ellipse cx="60" cy="304" rx="9" ry="5" fill="#283520" stroke="#3a4828" stroke-width="1"/>
         <ellipse cx="80" cy="312" rx="8" ry="5" fill="#283520" stroke="#3a4828" stroke-width="1"/>
-        <!-- Pyk -->
         <ellipse cx="65" cy="275" rx="6" ry="4" fill="#283520" stroke="#3a4828" stroke-width="1"/>
+
         <!-- Dorne -->
-        <path d="M243,574 L228,570 L216,562 L214,576 L219,590 L230,600 L245,607 L260,609 L275,605 L286,596 L290,584 L288,572 L277,567 L262,564 Z" fill="#342e18" stroke="#4a4222" stroke-width="1.2"/>
-        <!-- Peyredragon -->
-        <ellipse cx="366" cy="336" rx="13" ry="7" fill="#283520" stroke="#3a4828" stroke-width="1"/>
-        <!-- Braavos hint (northeast) -->
+        <path d="M243,574 L228,570 L216,562 L214,576 L219,590 L230,600
+                 L245,607 L260,609 L275,605 L286,596 L290,584 L288,572
+                 L277,567 L262,564 Z"
+              fill="#342e18" stroke="#4a4222" stroke-width="1.2"/>
+
+        <!-- Peyredragon (île) -->
+        <ellipse cx="388" cy="316" rx="13" ry="7" fill="#283520" stroke="#3a4828" stroke-width="1"/>
+
+        <!-- Braavos -->
         <ellipse cx="540" cy="180" rx="20" ry="12" fill="#1e2215" stroke="#282e1a" stroke-width="1" opacity="0.6"/>
         <text x="540" y="183" font-family="Cinzel,serif" font-size="7" fill="rgba(245,228,192,0.2)" text-anchor="middle">Braavos</text>
-        <!-- Mountains Vale -->
-        <g fill="#2a3518" stroke="#38451f" stroke-width="0.8"><polygon points="333,199 345,175 358,199"/><polygon points="349,210 362,184 375,210"/><polygon points="317,209 327,187 339,209"/></g>
-        <!-- Forests -->
-        <g fill="#1e2a12" opacity="0.48"><circle cx="155" cy="81" r="7"/><circle cx="181" cy="71" r="6"/><circle cx="207" cy="76" r="7"/><circle cx="231" cy="69" r="6"/><circle cx="255" cy="75" r="6"/><circle cx="168" cy="96" r="5"/><circle cx="196" cy="91" r="6"/></g>
-        <g fill="#1a2510" opacity="0.52"><circle cx="150" cy="24" r="7"/><circle cx="176" cy="17" r="6"/><circle cx="202" cy="13" r="7"/><circle cx="228" cy="15" r="6"/><circle cx="252" cy="21" r="5"/></g>
-        <g fill="#252e18" stroke="#333e20" stroke-width="0.8" opacity="0.6"><polygon points="109,293 119,274 129,293"/><polygon points="121,305 133,285 145,305"/></g>
-        <!-- Harrenhal -->
+
+        <!-- ══ RIVIÈRES ══ -->
+        <!-- Clip pour maintenir les rivières dans le continent -->
+        <clipPath id="westerosClip">
+          <path d="M200,32 L220,26 L248,19 L276,17 L300,22 L320,30 L336,41 L350,54 L356,68
+                   L352,84 L343,97 L341,112 L349,127 L357,143 L361,160 L356,176 L349,191
+                   L348,208 L353,226 L354,244 L347,260 L339,276 L336,292
+                   L340,305 L344,318
+                   Q338,322 328,322 Q318,322 312,328 Q306,334 306,342 Q306,350 312,358 Q318,364 328,366 Q338,366 344,362
+                   L348,372 L344,384 L338,394 L330,406 L320,420
+                   L312,432 L305,445 L299,458 L294,472 L291,487 L290,502
+                   L293,516 L290,530 L283,543 L273,556 L260,566 L246,572
+                   L232,570 L220,564 L210,554 L202,542 L196,528 L190,514
+                   L184,499 L177,483 L170,467 L162,450 L155,433 L148,415
+                   L141,397 L135,379 L129,361 L124,342 L120,323 L118,304
+                   L119,285 L121,266 L120,247 L116,228 L112,209 L113,190
+                   L117,171 L124,153 L133,136 L142,119 L151,103 L161,88
+                   L170,72 L180,57 L190,44 L199,34
+                   L199,34 L190,44 L178,44 L163,37 L147,28 L130,19
+                   L114,10 L104,3 L120,0 L148,0 L176,0 L196,7 L210,17 L220,26 Z"/>
+        </clipPath>
+
+        <g clip-path="url(#westerosClip)">
+          <!-- Trident — Fourche du Nord : du col vers les Jumeaux -->
+          <path d="M194,180 Q199,195 205,212 Q210,230 216,250 Q220,264 225,273 Q227,277 230,278"
+                stroke="rgba(80,140,190,0.52)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <!-- Trident — Fourche Verte : vers Vivesaigues -->
+          <path d="M230,278 Q224,281 219,284 Q215,287 212,286"
+                stroke="rgba(80,140,190,0.48)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+          <!-- Trident — Fourche Rouge : vers Harrenhal -->
+          <path d="M230,278 Q234,283 238,290 Q242,296 246,300"
+                stroke="rgba(80,140,190,0.48)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+          <!-- Trident — cours principal : confluent vers la côte, s'arrête à x=318 -->
+          <path d="M230,278 Q244,272 258,269 Q274,266 290,270 Q304,275 314,284 Q322,293 326,305 Q328,314 328,320"
+                stroke="rgba(80,140,190,0.52)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <!-- Rivière Néra : de l'ouest vers Port-Réal, s'arrête à x=310 -->
+          <path d="M156,338 Q168,334 180,330 Q194,326 208,323 Q222,320 236,319 Q252,318 266,320 Q280,323 292,328 Q302,333 308,340"
+                stroke="rgba(80,140,190,0.42)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+          <!-- Mander (vers le Bief) -->
+          <path d="M128,432 Q140,420 152,408 Q163,396 172,383 Q180,370 186,357 Q191,345 194,334"
+                stroke="rgba(80,140,190,0.35)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        </g>
+
+        <!-- Étiquettes rivières — hors clip pour lisibilité -->
+        <g font-family="Cinzel,serif" font-size="6" fill="rgba(100,165,210,0.55)" font-style="italic">
+          <!-- Label Trident nord — positionné dans la zone visible -->
+          <text x="208" y="225" transform="rotate(-70,208,225)">Fourche du Nord</text>
+          <!-- Label Trident principal -->
+          <text x="270" y="264" transform="rotate(-8,270,264)">Le Trident</text>
+          <!-- Label Néra -->
+          <text x="228" y="314" transform="rotate(-5,228,314)">La Néra</text>
+        </g>
+
+        <!-- Montagnes du Val -->
+        <g fill="#2a3518" stroke="#38451f" stroke-width="0.8">
+          <polygon points="333,199 345,175 358,199"/>
+          <polygon points="349,210 362,184 375,210"/>
+          <polygon points="317,209 327,187 339,209"/>
+          <polygon points="360,200 370,180 382,200"/>
+        </g>
+
+        <!-- Montagnes du Nord -->
+        <g fill="#253018" stroke="#334020" stroke-width="0.7" opacity="0.7">
+          <polygon points="280,100 290,82 300,100"/>
+          <polygon points="295,108 308,88 320,108"/>
+        </g>
+
+        <!-- Forêts du Nord -->
+        <g fill="#1e2a12" opacity="0.48">
+          <circle cx="155" cy="81" r="7"/><circle cx="181" cy="71" r="6"/>
+          <circle cx="207" cy="76" r="7"/><circle cx="231" cy="69" r="6"/>
+          <circle cx="255" cy="75" r="6"/><circle cx="168" cy="96" r="5"/>
+          <circle cx="196" cy="91" r="6"/>
+        </g>
+        <g fill="#1a2510" opacity="0.52">
+          <circle cx="150" cy="24" r="7"/><circle cx="176" cy="17" r="6"/>
+          <circle cx="202" cy="13" r="7"/><circle cx="228" cy="15" r="6"/>
+          <circle cx="252" cy="21" r="5"/>
+        </g>
+
+        <!-- Montagnes côté ouest (Îles de Fer) -->
+        <g fill="#252e18" stroke="#333e20" stroke-width="0.8" opacity="0.6">
+          <polygon points="109,293 119,274 129,293"/>
+          <polygon points="121,305 133,285 145,305"/>
+        </g>
+
+        <!-- Harrenhal (ruines) -->
         <path d="M240,298 L246,290 L252,298 L246,302Z" fill="#1e2a12" stroke="#3a4828" stroke-width="0.7" opacity="0.7"/>
-        <!-- Region labels -->
+
+        <!-- Symbole Jumeaux (deux tours) -->
+        <g opacity="0.55">
+          <rect x="224" y="271" width="5" height="8" fill="#3a3020" stroke="#c8a870" stroke-width="0.8"/>
+          <rect x="231" y="271" width="5" height="8" fill="#3a3020" stroke="#c8a870" stroke-width="0.8"/>
+          <rect x="222" y="278" width="15" height="2" fill="#504030" stroke="#c8a870" stroke-width="0.5"/>
+        </g>
+
+        <!-- Labels régions -->
         <g font-family="Cinzel,serif" fill="rgba(245,228,192,0.12)" text-anchor="middle">
-          <text x="220" y="78" font-size="9.5">LE NORD</text>
-          <text x="228" y="196" font-size="8.2">TERRES DU MILIEU</text>
-          <text x="113" y="323" font-size="7.8">L'OUEST</text>
-          <text x="352" y="228" font-size="7.8">LE VAL</text>
-          <text x="210" y="395" font-size="8.8">LE SUD</text>
+          <text x="200" y="78" font-size="9.5">LE NORD</text>
+          <text x="210" y="196" font-size="8.2">TERRES DU MILIEU</text>
+          <text x="113" y="345" font-size="7.8">L'OUEST</text>
+          <text x="355" y="228" font-size="7.8">LE VAL</text>
+          <text x="185" y="420" font-size="8.8">LE SUD</text>
           <text x="256" y="598" font-size="8.2">DORNE</text>
           <text x="74" y="260" font-size="6.5">ÎLES DE FER</text>
+          <text x="290" y="245" font-size="7.2">CONFLANS</text>
         </g>
-        <text x="472" y="430" font-family="Cinzel,serif" font-size="9" fill="rgba(90,150,175,0.26)" text-anchor="middle" transform="rotate(90,472,430)">MER ÉTROITE</text>
+
+        <!-- Mers -->
+        <text x="460" y="430" font-family="Cinzel,serif" font-size="9" fill="rgba(90,150,175,0.26)" text-anchor="middle" transform="rotate(90,460,430)">MER ÉTROITE</text>
         <text x="42" y="410" font-family="Cinzel,serif" font-size="7.5" fill="rgba(90,150,175,0.18)" text-anchor="middle" transform="rotate(-90,42,410)">MER DU COUCHER</text>
+
         <!-- Essos -->
-        <path d="M548,148 L620,128 L620,660 L548,640 Q526,535 526,400 Q526,263 548,148Z" fill="#1e2215" stroke="#282e1a" stroke-width="1" opacity="0.72"/>
+        <path d="M548,148 L620,128 L620,660 L548,640 Q526,535 526,400 Q526,263 548,148Z"
+              fill="#1e2215" stroke="#282e1a" stroke-width="1" opacity="0.72"/>
         <text x="568" y="405" font-family="Cinzel,serif" font-size="9" fill="rgba(245,228,192,0.1)" text-anchor="middle" transform="rotate(90,568,405)">ESSOS</text>
+
         <g id="pins"></g>
       </svg>
       <div class="mapleg">
@@ -729,6 +866,7 @@ textarea.avis-input{resize:vertical;min-height:90px}
         <div class="leg-i"><div class="leg-d" style="background:#70c870"></div>Tyrell</div>
         <div class="leg-i"><div class="leg-d" style="background:#8090c0"></div>Greyjoy</div>
         <div class="leg-i"><div class="leg-d" style="background:#d08040"></div>Martell</div>
+        <div class="leg-i"><div class="leg-d" style="background:#c8a870"></div>Frey</div>
         <div class="leg-i"><div class="leg-d" style="background:#aaa"></div>Garde de Nuit</div>
       </div>
     </div>
@@ -1514,7 +1652,7 @@ const LOCS=[
    epochs:["tdf"],
    history:"Terres sauvages des 'gens libres'. Les Marcheurs Blancs y errent depuis que l'hiver est revenu.",
    events:["Trône de Fer : Jon Snow s'infiltre chez les sauvageons (T2)","Bran retrouve la Corneille à Trois Yeux dans une caverne (T3–T5)"]},
-  {id:"portreal",    label:"Port-Réal",             x:255,y:328,col:"#d4b840",
+  {id:"portreal",    label:"Port-Réal",             x:308,y:342,col:"#d4b840",
    epochs:["conq","danse","tdf"],
    history:"Fondée par Aegon le Conquérant à l'embouchure du Blackwater Rush. Un demi-million d'habitants. Le Donjon Rouge domine la colline d'Aegon, le Grand Sept de Baelor celle de Visenya.",
    events:["Conquête : Aegon fonde la ville et forge le Trône de Fer avec les épées fondues de ses ennemis","Danse des Dragons : prise par Rhaenyra, ravagée par l'émeute, reconquise par les Verts","Trône de Fer : Bataille de la Néra, Cersei détruit le Sept au feu grégeois"]},
@@ -1530,7 +1668,7 @@ const LOCS=[
    epochs:["tdf"],
    history:"Les Eyriés — siège ancestral de la maison Arryn, haut seigneur du Val. La forteresse est perchée à 3 000 m dans les Montagnes de la Lune, accessible uniquement par un chemin de chèvres étroit et trois avant-postes (Porte de Pierre, Porte de Sang, Porte du Ciel). La 'lune du ciel' — cellule au sol de bois coulissant ouverte sur le précipice — est sa prison légendaire. En été la forteresse est imprenable ; en hiver, inaccessible, la maison Arryn descend dans les plaines.",
    events:["Trône de Fer : Tyrion Lannister y est emprisonné par Lysa Arryn et jugé par combat — Bronn le défend et le sauve (T1)","Lysa Arryn y gouverne seule après la mort de Jon Arryn, refusant de rejoindre la guerre","Sansa cachée sous l'identité d'Alayne Stone (T4–T5) — Littlefinger y prend le contrôle du Val"]},
-  {id:"peyredragon", label:"Peyredragon",           x:366,y:336,col:"#c06090",
+  {id:"peyredragon", label:"Peyredragon",           x:388,y:316,col:"#c06090",
    epochs:["conq","danse","tdf"],
    history:"Île volcanique au large de l'embouchure du Blackwater Rush, fief ancestral des Targaryen. Ses salles en pierre de dragon sculptée abritèrent des siècles de pouvoir Targaryen.",
    events:["Conquête : point de départ de la Conquête d'Aegon Ier","Danse des Dragons : base des Noirs — quartier général de Rhaenyra et Daemon","Trône de Fer : lieu de naissance de Daenerys, sa base de départ pour reconquérir Westeros"]},
@@ -1578,7 +1716,11 @@ const LOCS=[
    epochs:["danse"],
    history:"Siège des Vélaryon sur une île au large de Peyredragon. La plus grande forteresse maritime de Westeros. Ses quais peuvent accueillir la plus grande flotte du royaume.",
    events:["Danse des Dragons : quartier général naval des Noirs","Base de Corlys Vélaryon dit le Serpent des Mers — la flotte de Marée-Haute coupe Peyredragon de la côte"]},
-  {id:"lacdyeux",    label:"Lac-aux-Yeux-Dieux",   x:258,y:285,col:"#c06090",
+  {id:"jumeaux",     label:"Les Jumeaux",            x:230,y:278,col:"#c8a870",
+   epochs:["tdf"],
+   history:"Deux châteaux identiques enjambant le Trident, seul pont sur le fleuve en ce point. Les Frey monnaient chaque traversée depuis des générations. Le lieu du crime le plus infâme de Westeros : les Noces Pourpres.",
+   events:["T1 : Catelyn négocie le passage avec Walder Frey pour l'armée de Robb","T3 : Noces Pourpres — massacre de Robb Stark, Catelyn et l'armée du Nord","S6 GoT : Arya Stark tue Walder Frey et ses fils héritiers"]},
+  {id:"lacdyeux",    label:"Lac-aux-Yeux-Dieux" ,   x:258,y:285,col:"#c06090",
    epochs:["danse"],
    history:"Lac sacré dans le Conflans, réputé pour ses qualités mystiques. Des milliers de statues de dieux locaux y ont été jetées depuis des siècles.",
    events:["Danse des Dragons : duel aérien légendaire entre Daemon sur Caraxès et Aemond sur Vhagar — les deux dragons s'abattent ensemble dans les eaux. Aucun des deux cavaliers ne sera jamais retrouvé"]},
@@ -1595,7 +1737,7 @@ function locId(s){
     "Vivesaigues":"vivesaigues","Nid d'Aigle":"nidaigle",
     "Peyredragon":"peyredragon","Peyredragon / Port-Réal":"peyredragon",
     "Pyk":"pyk","Dorne":"dorne","Dorne / Lancesoleil":"dorne","Lancesoleil":"lancesoleil",
-    "Harrenhal":"harrenhal","Essos (Pentos)":"essos","Essos":"essos",
+    "Harrenhal":"harrenhal","Jumeaux":"jumeaux","Les Jumeaux":"jumeaux","Essos (Pentos)":"essos","Essos":"essos",
     "Meereen":"essos","Essos / Meereen":"essos","Braavos":"braavos",
     "Braavos (T4-T5)":"braavos","Meereen (T4-T5)":"essos",
     "Val d'Arryn (T4-T5)":"nidaigle","Nord / Winterfell":"nord",
@@ -1705,60 +1847,46 @@ const HOTD_CHARS_MAIN = [
    tomes:["HotD"]},
 ];
 
-// ── SAUVAGEONS CHARACTERS (added to main list) ──
-const SAUVAGEONS_MAIN = [
-  {name:"Mance Rayder (Roi au-delà du Mur)",house:"Sauvageons",sort:"ManceR",loc:"Au-delà du Mur",status:"alive",
-   chronologie:"Ancien frère de la Garde de Nuit, Roi au-delà du Mur (T2→T5)",
-   traits:"Charismatique · musicien · stratège · unificateur · libre",
-   description:"Ancien membre de la Garde de Nuit devenu déserteur, Mance Rayder a accompli l'impensable : unifier les cent clans des gens libres sous une seule bannière. Seul chef capable de rassembler sauvageons, géants et Enfants de la Forêt, il mène son peuple vers le Mur pour fuir la menace des Marcheurs Blancs.",
-   anecdote:"Stannis le condamne au bûcher — mais Mélisandre substitue Rattleshirt via un glamour. Mance survit et retourne au-delà du Mur, chargé par Jon d'infiltrer Winterfell sous l'identité d'un barde pour retrouver Arya (en réalité Jeyne Poole).",
-   tomes:["T2","T3","T4","T5"]},
-  {name:"Ygritte",house:"Sauvageons",sort:"Ygritte",loc:"Au-delà du Mur",status:"dead",
-   chronologie:"~18 ans (T2-T3), sauvageonne, amante de Jon Snow, tuée à la Néra (T3)",
-   traits:"Libre · directe · amoureuse · fière de sa sauvagerie",
-   description:"Sauvageonne capturée puis libérée par Jon Snow qui s'infiltre chez les 'gens libres'. Directe, fière, indomptable, elle devient son guide et son amante. Quand Jon la trahit pour revenir à la Garde de Nuit, elle participe à l'attaque sur Châteaunoir et meurt dans ses bras.",
-   anecdote:"Sa rengaine 'Tu ne sais rien, Jon Snow' est devenue un symbole de la saga — et la dernière fois qu'elle la prononce, c'est avec une flèche dans les poumons, mourante dans les bras de Jon.",
-   tomes:["T2","T3"]},
-  {name:"Tormund Fléau-des-Géants",house:"Sauvageons",sort:"TormundS",loc:"Au-delà du Mur",status:"alive",
-   chronologie:"Lieutenant de Mance, traverse le Mur au T3, allié de Jon Snow (T4-T5)",
-   traits:"Colossal · roux · fanfaron · loyal · courageux",
-   description:"Guerrier légendaire des gens libres aux cheveux roux flamboyants. Ses récits héroïques et invraisemblables en font une figure à la fois terrifiante et comique. Il devient l'un des premiers sauvageons à faire confiance à Jon Snow et à franchir le Mur vers le sud.",
-   anecdote:"Il prétend avoir allaité un ours pendant trois mois, battu un géant à mort, et dormi avec sa femme ensuite. La vérité de ces histoires importe moins que le fait que personne n'ose les contester.",
-   tomes:["T3","T4","T5"]},
-  {name:"Val",house:"Sauvageons",sort:"Val",loc:"Châteaunoir",status:"alive",
-   chronologie:"T5, princesse sauvageonne retenue à Châteaunoir par Stannis",
-   traits:"Fière · intelligente · insoumise · refuse d'être un pion",
-   description:"Sœur de Dalla (femme de Mance), Val est considérée comme une princesse sauvageonne — une désignation sans équivalent à la cour. Intelligente et sans compromis, elle refuse d'être instrumentalisée malgré les plans de Stannis et Jon pour son mariage politique.",
-   anecdote:"Jon lui confie une mission secrète : retrouver Tormund au-delà du Mur pour organiser le passage des sauvageons. Elle revient — preuve que les gens libres font davantage confiance à Jon qu'à n'importe quel homme de la Garde.",
-   tomes:["T5"]},
-  {name:"Osha",house:"Sauvageons",sort:"Osha",loc:"Skagos (présumé T3-T5)",status:"alive",
-   chronologie:"T1→T4, gardienne de Bran puis de Rickon vers Skagos",
-   traits:"Pragmatique · courageuse · loyale aux enfants · connait les Autres",
-   description:"Sauvageonne capturée en tentant de voler à Winterfell, Osha devient la protectrice des enfants Stark. Après la prise de Winterfell, elle guide Bran et Rickon. Elle les sépare pour mieux les dissimuler, emmenant Rickon vers l'île sauvage de Skagos.",
-   anecdote:"Elle a fui au-delà du Mur car son amant a été transformé en mort-vivant et l'a attaquée. 'Les Autres' ne sont pas une légende pour elle — elle les a vus de ses propres yeux.",
-   tomes:["T1","T2","T3","T4"]},
-  {name:"Craster",house:"Sauvageons",sort:"Craster",loc:"Au-delà du Mur",status:"dead",
-   chronologie:"T2-T3, tué lors de la mutinerie à Fort Craster",
-   traits:"Brutal · cynique · pacte avec les Marcheurs · polygame incestueux",
-   description:"Sauvageons au-delà du Mur qui offre ses fils nouveau-nés aux Marcheurs Blancs contre sa propre protection. Polygame qui épouse ses propres filles, Craster est moralement abject mais précieux à la Garde de Nuit pour ses informations et ses réserves en plein Grand Hiver.",
-   anecdote:"Quand Sam découvre la vérité sur le sort de ses fils, la révolte éclate : Craster est tué par ses invités de la Garde de Nuit — qui assassinent aussi leur Lord Commandant Mormont dans la confusion.",
-   tomes:["T2","T3"]},
-  {name:"Rattleshirt (le Seigneur des Os)",house:"Sauvageons",sort:"Rattleshirt",loc:"Au-delà du Mur",status:"dead",
-   chronologie:"T3→T5, exécuté à la place de Mance grâce au glamour de Mélisandre",
-   traits:"Cruel · couvert d'os · imprévisible · brûlé à la place de Mance",
-   description:"Sauvageons surnommé 'le Seigneur des Os' pour son armure faite d'ossements d'ennemis. Cruel et imprévisible, il est néanmoins un guerrier redoutable. Il est brûlé vif à la place de Mance Rayder par le glamour de Mélisandre — Stannis croit exécuter le Roi au-delà du Mur.",
-   anecdote:"Sa mort illustre la puissance des glamours de Mélisandre : une illusion si parfaite qu'elle trompe un roi, toute son armée et le lecteur lui-même lors d'une première lecture.",
-   tomes:["T3","T5"]},
-];
 
-const HLAB={Stark:"Stark",Lannister:"Lannister",Baratheon:"Baratheon",Targaryen:"Targaryen",Tully:"Tully",GardeNuit:"Garde de Nuit",Tyrell:"Tyrell",Greyjoy:"Greyjoy",Martell:"Martell",Bolton:"Bolton",FeuSang:"Feu & Sang",ChevErrant:"Chev. Errant",HotD:"House of the Dragon",Sauvageons:"Sauvageons",Autre:"Autre"};
-const HCOL={Stark:"#8ab4d0",Lannister:"#d4b840",Baratheon:"#9090cc",Targaryen:"#d07070",Tully:"#60b8cc",GardeNuit:"#aaa",Tyrell:"#70c870",Greyjoy:"#8090c0",Martell:"#d08040",Bolton:"#c05050",FeuSang:"#e08840",ChevErrant:"#a8c870",HotD:"#c06090",Sauvageons:"#9ec860",Autre:"#b0904a"};
+// Personnages Frey
+var FREY_CHARS=[
+  {name:"Walder Frey",house:"Frey",sort:"Walder",loc:"Jumeaux",status:"dead",
+   chronologie:"~90 ans (T1\u2192T5), tu\u00e9 par Arya Stark d\u00e9guis\u00e9e en servante",
+   traits:"Calculateur \u00b7 rancunier \u00b7 prolifique \u00b7 tra\u00eetre",
+   description:"Seigneur du Passage des Jumeaux, Walder Frey est l\u2019architecte des Noces Pourpres. Offens\u00e9 que Robb Stark ait rompu sa promesse de mariage, il organise avec Tywin Lannister le massacre de Robb, Catelyn et de toute l\u2019arm\u00e9e du Nord lors d\u2019un banquet cens\u00e9 sceller la paix.",
+   anecdote:"Il a eu plus de 100 enfants reconnus. Sa mort aux mains d\u2019Arya \u2014 qui lui a servi en tarte la chair de ses fils \u2014 est l\u2019une des vengeances les plus gla\u00e7antes de la saga.",
+   tomes:["T1","T2","T3","T4","T5"]},
+  {name:"Edmure Tully",house:"Tully",sort:"Edmure",loc:"Vivesaigues",status:"alive",
+   chronologie:"~30 ans (T3), captur\u00e9 aux Noces Pourpres, prisonnier des Frey (T3\u2192T5)",
+   traits:"Courageux mais impulsif \u00b7 loyal \u00b7 maladroit strat\u00e8ge",
+   description:"Fils de Lord Hoster Tully et h\u00e9ritier de Vivesaigues, Edmure est un seigneur au c\u0153ur g\u00e9n\u00e9reux mais aux d\u00e9cisions parfois d\u00e9sastreuses. C\u2019est lui qui \u00e9pouse une fille Frey lors des Noces Pourpres, ignorant le massacre qui va suivre.",
+   anecdote:"Il tire une fl\u00e8che enflam\u00e9e pour allumer le b\u00fbcher fun\u00e8bre de son p\u00e8re \u2014 et rate \u00e0 trois reprises sous le regard consterné de son oncle Brynden, avant qu\u2019un archer fasse le tir \u00e0 sa place.",
+   tomes:["T3","T4","T5"]},
+  {name:"Ryman Frey",house:"Frey",sort:"Ryman",loc:"Jumeaux",status:"dead",
+   chronologie:"Fils a\u00een\u00e9 de Walder Frey, h\u00e9ritier temporaire, mort au T5",
+   traits:"Brutal \u00b7 incomp\u00e9tent \u00b7 arrogant",
+   description:"Fils a\u00een\u00e9 de Walder Frey, Ryman est l\u2019h\u00e9ritier des Jumeaux. Il se distingue par sa brutalit\u00e9 et sa b\u00eatise lors du si\u00e8ge de Vivesaigues, mena\u00e7ant d\u2019ex\u00e9cuter Edmure Tully chaque jour sans jamais passer \u00e0 l\u2019acte.",
+   anecdote:"Il est pendu par des inconnus sur la route des Jumeaux, vraisemblablement par des agents de la Fraternit\u00e9 sans Banni\u00e8res ou de Dame C\u0153ur-de-Pierre.",
+   tomes:["T3","T4","T5"]},
+  {name:"Black Walder Frey",house:"Frey",sort:"BlackWalder",loc:"Jumeaux",status:"alive",
+   chronologie:"Petit-fils de Walder, l\u2019un des fils Frey les plus dangereux",
+   traits:"Impitoyable \u00b7 ambitieux \u00b7 violent \u00b7 rus\u00e9",
+   description:"Surnomm\u00e9 Black Walder pour le distinguer de son grand-p\u00e8re, il est parmi les Frey les plus actifs et les plus violents. Il participe aux Noces Pourpres et aux machinations qui suivent la chute de Robb Stark.",
+   anecdote:"Dans les livres, il est soup\u00e7onn\u00e9 d\u2019avoir assassin\u00e9 sa propre femme pour en prendre une autre. Son ambition le place parmi les candidats au pouvoir sur les Jumeaux.",
+   tomes:["T3","T4","T5"]},
+  {name:"Roslin Tully (n\u00e9e Frey)",house:"Frey",sort:"Roslin",loc:"Vivesaigues",status:"alive",
+   chronologie:"Fille de Walder Frey, mari\u00e9e \u00e0 Edmure Tully lors des Noces Pourpres",
+   traits:"Douce \u00b7 innocente \u00b7 prisonni\u00e8re de sa naissance",
+   description:"Roslin est la fille Frey choisie pour Edmure Tully. Contrairement \u00e0 ses fr\u00e8res, elle n\u2019est pas au courant du massacre planifi\u00e9. Sa beaut\u00e9 surprend Edmure qui s\u2019attendait \u00e0 un pi\u00e8ge.",
+   anecdote:"Elle pleure pendant le festin des Noces Pourpres. Catelyn, qui l\u2019observe, comprend trop tard que ses larmes ne sont pas celles d\u2019une mari\u00e9e \u00e9mue mais celles d\u2019une femme qui sait ce qui va se passer.",
+   tomes:["T3","T4"]},
+];
+CHAR_DATA.push(...FREY_CHARS);
 
 // Merge all character sources
 CHAR_DATA.push(...FEUSANG_CHARS);
 CHAR_DATA.push(...DUNKEGG_CHARS);
 CHAR_DATA.push(...HOTD_CHARS_MAIN);
-CHAR_DATA.push(...SAUVAGEONS_MAIN);
 
 let hf="all", sq="";
 
@@ -1767,6 +1895,9 @@ let hf="all", sq="";
 // ════════════════════════════════════════════════════
 function getF(){return CHAR_DATA.filter(c=>(hf==="all"||c.house===hf)&&c.name.toLowerCase().includes(sq.toLowerCase()));}
 function grp(arr){const g={};arr.forEach(c=>{const l=c.sort[0].toUpperCase();if(!g[l])g[l]=[];g[l].push(c)});return g;}
+
+const HLAB={Stark:"Stark",Lannister:"Lannister",Baratheon:"Baratheon",Targaryen:"Targaryen",Tully:"Tully",GardeNuit:"Garde de Nuit",Tyrell:"Tyrell",Greyjoy:"Greyjoy",Martell:"Martell",Frey:"Frey",Bolton:"Bolton",FeuSang:"Feu & Sang",ChevErrant:"Chev. Errant",HotD:"House of the Dragon",Sauvageons:"Sauvageons",Autre:"Autre"};
+const HCOL={Stark:"#8ab4d0",Lannister:"#d4b840",Baratheon:"#9090cc",Targaryen:"#d07070",Tully:"#60b8cc",GardeNuit:"#aaa",Tyrell:"#70c870",Greyjoy:"#8090c0",Martell:"#d08040",Frey:"#c8a870",Bolton:"#c05050",FeuSang:"#e08840",ChevErrant:"#a8c870",HotD:"#c06090",Sauvageons:"#9ec860",Autre:"#b0904a"};
 
 function cardHTML(c){
   const lid=locId(c.loc);
@@ -1786,13 +1917,80 @@ function cardHTML(c){
 <div class="tome-track">${tbadges}<span class="tbadge ${sdot==='alive'?'alive':sdot==='unknown'?'':'dead'}" style="margin-left:auto">${slabel}</span></div>`;
 }
 
+
+var HOUSE_INFO = {
+  Stark:{col:"#8ab4d0",border:"#4a7090",name:"Maison Stark",
+   words:"\u00ab\u00a0L\u2019hiver vient\u00a0\u00bb",
+   seat:"Winterfell \u2014 Le Nord",
+   desc:"Gardiens du Nord depuis des mill\u00e9naires, les Stark incarnent l\u2019honneur et la duret\u00e9 de leur terre. Leur devise n\u2019est pas une menace mais un avertissement mill\u00e9naire : quelque chose de terrible revient du Nord. Descendants des Rois du Nord, ils portent le sang des Premiers Hommes et entretiennent une relation mystique avec la nature \u2014 symbolis\u00e9e par leurs loups-garous et les visions de Bran."},
+  Lannister:{col:"#d4b840",border:"#907020",name:"Maison Lannister",
+   words:"\u00ab\u00a0Entendre moi rugir\u00a0\u00bb",
+   seat:"Castral Roc \u2014 L\u2019Ouest",
+   desc:"La maison la plus riche de Westeros, assise sur des mines d\u2019or. Leur devise non officielle \u2014 \u00ab\u00a0Un Lannister paie toujours ses dettes\u00a0\u00bb \u2014 illustre leur obs\u00e9ssion de la r\u00e9putation et de la vengeance. Tywin a b\u00e2ti leur h\u00e9g\u00e9monie sur la terreur autant que sur l\u2019or ; ses enfants en paient le prix."},
+  Targaryen:{col:"#d07070",border:"#903030",name:"Maison Targaryen",
+   words:"\u00ab\u00a0Le Feu et le Sang\u00a0\u00bb",
+   seat:"Peyredragon \u2014 Mer \u00c9troite",
+   desc:"Venue de la lointaine Valyria avant le Destin de la Flamme, la maison Targaryen a conqu\u00e9rit les Sept Couronnes gr\u00e2ce \u00e0 ses dragons. Trois si\u00e8cles de r\u00e8gne, de grandeur et de folie \u2014 leur sang porte \u00e0 la fois le feu du g\u00e9nie et la braise de la d\u00e9mence. Les derniers Targaryen portent le poids d\u2019un empire perdu et d\u2019une proph\u00e9tie."},
+  Baratheon:{col:"#9090cc",border:"#505090",name:"Maison Baratheon",
+   words:"\u00ab\u00a0Nous sommes la temp\u00eate\u00a0\u00bb",
+   seat:"Accalmie \u2014 Cap de l\u2019Ire",
+   desc:"Fond\u00e9e par Orys Baratheon, b\u00e2tard demi-fr\u00e8re d\u2019Aegon le Conqu\u00e9rant. Robert Baratheon renversa les Targaryen lors de sa r\u00e9bellion, mais ses trois fils \u2014 Joffrey, Myrcella, Tommen \u2014 sont en r\u00e9alit\u00e9 des Lannister, semant les germes de la guerre des Cinq Rois."},
+  Tully:{col:"#60b8cc",border:"#306878",name:"Maison Tully",
+   words:"\u00ab\u00a0Famille, Devoir, Honneur\u00a0\u00bb",
+   seat:"Vivesaigues \u2014 Terres du Milieu",
+   desc:"Seigneurs suzerains des Terres du Milieu, les Tully gouvernent depuis le ch\u00e2teau fluvial de Vivesaigues. Alli\u00e9s des Stark par le mariage de Catelyn, ils incarnent les vertus de la loyaut\u00e9 familiale et du devoir \u2014 vertus qui se retourneront contre eux dans les guerres qui suivent la mort de Ned Stark."},
+  Tyrell:{col:"#70c870",border:"#408040",name:"Maison Tyrell",
+   words:"\u00ab\u00a0Cro\u00eetre, grandir, s\u2019\u00e9panouir\u00a0\u00bb",
+   seat:"Hautjardin \u2014 Le Bief",
+   desc:"La maison la plus puissante du Sud, dont la richesse agricole du Bief nourrit une bonne partie de Westeros. Olenna Tyrell, la Reine des \u00c9pines, est l\u2019une des manipulatrices les plus redoutables de la saga."},
+  Greyjoy:{col:"#8090c0",border:"#405068",name:"Maison Greyjoy",
+   words:"\u00ab\u00a0Nous ne semons pas\u00a0\u00bb",
+   seat:"Pyk \u2014 \u00celes de Fer",
+   desc:"Seigneurs des \u00celes de Fer, peuple de navigateurs et de pillards qui se r\u00e9clament du Dieu Noy\u00e9. Balon Greyjoy a men\u00e9 une r\u00e9bellion \u00e9cras\u00e9e par Robert Baratheon. Son fils Theon trahira les Stark dans l\u2019espoir de regagner le respect d\u2019un p\u00e8re qui ne le lui accordera jamais."},
+  Martell:{col:"#d08040",border:"#905020",name:"Maison Martell",
+   words:"\u00ab\u00a0Ni courb\u00e9, ni bris\u00e9\u00a0\u00bb",
+   seat:"Lancesoleil \u2014 Dorne",
+   desc:"Seule grande maison \u00e0 n\u2019avoir jamais \u00e9t\u00e9 conquise par Aegon le Conqu\u00e9rant. Les Martell portent leur ind\u00e9pendance comme un blason. Leur qu\u00eate de vengeance pour le meurtre d\u2019Elia lors du sac de Port-R\u00e9al structure toute leur politique."},
+  GardeNuit:{col:"#aaaaaa",border:"#666666",name:"La Garde de Nuit",
+   words:"\u00ab\u00a0Ici la nuit se termine\u00a0\u00bb",
+   seat:"Ch\u00e2teaunoir \u2014 Le Mur",
+   desc:"Ordre mill\u00e9naire charg\u00e9 de d\u00e9fendre le Mur contre les menaces venues du Nord. Ses membres renoncent \u00e0 leurs noms, terres et h\u00e9ritages. Jadis honor\u00e9, l\u2019ordre ne compte plus que quelques centaines de fr\u00e8res. Jon Snow en deviendra le 998e Lord Commandant, le plus jeune de l\u2019histoire."},
+  Bolton:{col:"#c05050",border:"#802020",name:"Maison Bolton",
+   words:"\u00ab\u00a0Notre joie qui fleurit l\u2019hiver\u00a0\u00bb",
+   seat:"Fort-Terreur \u2014 Le Nord",
+   desc:"Anciens rivaux des Stark, les Bolton pratiquaient autrefois l\u2019\u00e9corchement de leurs ennemis \u2014 une tradition que Ramsay Bolton perp\u00e9tue. Ils ont trahi les Stark lors des Noces Pourpres et br\u00e8vement tenu Winterfell avant d\u2019\u00eatre d\u00e9faits lors de la Bataille des B\u00e2tards."},
+  Frey:{col:"#c8a870",border:"#906840",name:"Maison Frey",
+   words:"\u00ab\u00a0Nous honorons nos serments\u00a0\u00bb",
+   seat:"Les Jumeaux \u2014 Conflans",
+   desc:"Seigneurs du Passage des Jumeaux, le seul pont enjambant le Trident en ces lieux, les Frey monnaient chaque travers\u00e9e. Walder Frey a organis\u00e9 les Noces Pourpres avec la complicit\u00e9 de Tywin Lannister \u2014 trahissant l\u2019hospitalit\u00e9 sacr\u00e9e du sel et du pain pour massacrer ses h\u00f4tes."},
+  Sauvageons:{col:"#9ec860",border:"#6a8a40",name:"Les Gens Libres",
+   words:"\u00ab\u00a0Nous ne nous agenouillons pas\u00a0\u00bb",
+   seat:"Au-del\u00e0 du Mur \u2014 Terres sauvages",
+   desc:"Les peuples vivant au-del\u00e0 du Mur se nomment eux-m\u00eames les Gens Libres. Ils refusent rois, lois et murs. Mance Rayder a r\u00e9ussi l\u2019impossible : les unir pour la premi\u00e8re fois depuis des mill\u00e9naires, non par conqu\u00eate, mais par persuasion, pour fuir la menace des Marcheurs Blancs."},
+  Autre:{col:"#b0904a",border:"#806030",name:"Personnages divers",
+   words:"Ind\u00e9pendants & Alli\u00e9s",
+   seat:"Westeros & Essos",
+   desc:"Personnages n\u2019appartenant pas aux grandes maisons : marchands, pr\u00eatres, assassins, mercenaires, ma\u00eetres espions. De Varys \u00e0 Melisandre en passant par Syrio Forel, ces figures ind\u00e9pendantes jouent souvent un r\u00f4le d\u00e9cisif sans porter les couleurs d\u2019aucune maison."},
+};
+
 function render(){
   const f=getF();
   document.getElementById('ctr').textContent=`${f.length} personnage${f.length>1?'s':''}`;
   const mc=document.getElementById('mc');
   if(!f.length){mc.innerHTML='<div class="empty">Aucun personnage ne correspond.</div>';return;}
+  // Bannière maison
+  let bannerHTML='';
+  if(hf&&hf!=='all'&&HOUSE_INFO[hf]){
+    const hi=HOUSE_INFO[hf];
+    bannerHTML=`<div class="house-banner" style="border-color:${hi.border};background:rgba(0,0,0,.22)">
+      <div class="house-banner-name" style="color:${hi.col}">${hi.name}</div>
+      <div class="house-banner-words" style="color:${hi.col}">${hi.words}</div>
+      <div class="house-banner-desc">${hi.desc}</div>
+      <div class="house-banner-seat" style="color:${hi.col}">⚑ ${hi.seat}</div>
+    </div>`;
+  }
   const g=grp(f);const lets=Object.keys(g).sort();
-  mc.innerHTML=lets.map((L,li)=>
+  mc.innerHTML=bannerHTML+lets.map((L,li)=>
     `<div class="lsec" id="s-${L}"><div class="lh">${L}<span class="lc">${g[L].length} personnage${g[L].length>1?'s':''}</span></div>
     <div class="cgrid">${g[L].map((c,ci)=>`<div class="card" style="animation-delay:${(li*0.04+ci*0.035).toFixed(2)}s">${cardHTML(c)}</div>`).join('')}</div></div>`).join('');
 }
