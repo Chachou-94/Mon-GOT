@@ -850,7 +850,6 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1rem,3vw,2rem);color:va
 .creature-card.hidden{display:none}
 
 .card-emoji{font-size:2.2rem;display:block;text-align:center;padding:1.1rem 1rem .4rem;line-height:1;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
-.card-
 .card-name{font-family:'Cinzel',serif;font-size:.92rem;color:var(--parch);text-align:center;margin-bottom:.3rem;line-height:1.25}
 .card-epithet{font-family:'EB Garamond',serif;font-size:.78rem;font-style:italic;color:var(--gold-d);text-align:center;margin-bottom:.6rem;opacity:.8}
 .card-tags{display:flex;flex-wrap:wrap;gap:.2rem;justify-content:center;margin-bottom:.55rem}
@@ -916,6 +915,13 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1rem,3vw,2rem);color:va
 .tab-section-title{font-family:'Cinzel Decorative',serif;font-size:clamp(1rem,3vw,2rem);color:var(--gold);text-shadow:0 2px 28px rgba(201,168,76,.35);letter-spacing:.04em}
 .tab-section-sub{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-d);margin-top:.4rem}
 .card-body{padding:.5rem 1rem 1rem}
+
+/* ══ BADGE FACTION ════════════════════════════════════════════════════════ */
+.faction-badge{display:inline-block;font-family:'Cinzel',serif;font-size:.4rem;letter-spacing:.15em;text-transform:uppercase;padding:.15rem .5rem;border-radius:1px;margin-bottom:.45rem;border:1px solid}
+.faction-noirs{background:rgba(30,30,60,.4);border-color:rgba(100,100,180,.4);color:rgba(160,160,220,.8)}
+.faction-verts{background:rgba(20,60,20,.4);border-color:rgba(60,140,60,.4);color:rgba(100,200,100,.8)}
+.faction-sauvage{background:rgba(60,30,10,.4);border-color:rgba(150,80,30,.4);color:rgba(200,130,60,.8)}
+
 </style>
 </head>
 <body>
@@ -1626,7 +1632,7 @@ const CREATURES = [
   // ── DRAGONS ──────────────────────────────────────────────────
   {
     id:'drogon', cat:'dragon', series:['got'], emoji:'🐉', size:'Colossal',
-    name:'Drogon', epithet:'"L\'Ombre de la Terreur Noire"',
+    name:'Drogon', nameEn:'Drogon', epithet:'"L\'Ombre de la Terreur Noire"',
     status:'alive',
     rider:'Daenerys Targaryen',
     desc:'Le plus grand et le plus sauvage des trois dragons de Daenerys, nommé en hommage à Khal Drogo. Entièrement noir, cracheur de flammes rouge sang.',
@@ -1635,16 +1641,16 @@ const CREATURES = [
   },
   {
     id:'rhaegal', cat:'dragon', series:['got'], emoji:'🐉', size:'Grand',
-    name:'Rhaegal', epithet:'"Le Dragon Vert"',
+    name:'Rhaegal', nameEn:'Rhaegal', epithet:'"Le Dragon Vert"',
     status:'dead',
     rider:'Jon Snow (brièvement)',
-    desc:'Nommé en hommage à Rhaegar Targaryen, père de Jon Snow. Dragon vert aux écailles bronze, il est le cavalier de Jon lors de la Grande Guerre.',
+    desc:'Nommé en hommage à Rhaegar Targaryen, père de Jon Snow. Dragon vert aux écailles bronze, il est la monture de Jon lors de la Grande Guerre.',
     detail:'Tué par les scorpions de la Flotte d\'Euron Greyjoy au large de Dragonstone lors de son retour vers Port-Réal. Sa mort provoque la fureur de Daenerys.',
     tags:['got']
   },
   {
     id:'viserion', cat:'dragon', series:['got'], emoji:'🐉', size:'Grand',
-    name:'Viserion', epithet:'"Le Dragon de Glace"',
+    name:'Viserion', nameEn:'Viserion', epithet:'"Le Dragon de Glace"',
     status:'dead',
     rider:'Roi de la Nuit',
     desc:'Nommé en hommage à Viserys Targaryen. Crème et or à l\'origine, il est tué au-delà du Mur et ressuscité en wight dragon crachant du feu de glace bleu.',
@@ -1653,127 +1659,127 @@ const CREATURES = [
   },
   {
     id:'balerion', cat:'dragon', series:['hotd','lore'], emoji:'💀', size:'Légendaire',
-    name:'Balerion', epithet:'"Le Terreur Noire"',
+    name:'Balerion', nameEn:'Balerion the Black Dread', epithet:'"Le Terreur Noire"',
     status:'dead',
     rider:'Aegon le Conquérant · Viserys I',
     desc:'Le plus grand dragon de l\'histoire de Westeros. Noir comme la nuit, ses flammes dorées fondaient le fer et la pierre. Il forgea le Trône de Fer.',
-    detail:'Vivant depuis l\'Ancien Valyria, il mourut de vieillesse en 94 apC sous le règne de Jaehaerys Ier. Son crâne trône dans le château de Port-Réal. Dernier à avoir vécu à Valyria avant la Mère des Flammes.',
+    detail:'Vivant depuis l\'Ancien Valyria, il mourut de vieillesse en 94 apC sous le règne de Viserys Ier. Son crâne trône dans le château de Port-Réal. Dernier à avoir vécu à Valyria avant la Mère des Flammes.',
     tags:['hotd','lore']
   },
   {
     id:'vhagar', cat:'dragon', series:['hotd'], emoji:'🐉', size:'Colossal',
-    name:'Vhagar', epithet:'"La Vieille Reine"',
+    name:'Vhagar', nameEn:'Vhagar', epithet:'"La Vieille Reine"',
     status:'dead',
     rider:'Laena Velaryon · Aemond Targaryen',
-    desc:'Second en taille après Balerion, Vhagar était l\'un des trois dragons de la Conquête d\'Aegon. Vert-bronze, immense, âgée de deux siècles pendant HotD.',
+    desc:'[🟩 Verts] Second en taille après Balerion, Vhagar était l\'un des trois dragons de la Conquête d\'Aegon. Vert-bronze, immense, âgée de deux siècles pendant HotD.',
     detail:'Compagne de la reine Visenya lors de la Conquête, elle fut plus tard montée par Laena Velaryon puis Aemond "Œil-de-Saphir". Elle tue Arrax et Lucerys au-dessus de la Baie des Naufrageurs, avant de périr avec Daemon et Caraxès au Lac-Œil-de-Dieu.',
     tags:['hotd','lore']
   },
   {
     id:'caraxes', cat:'dragon', series:['hotd'], emoji:'🐉', size:'Très grand',
-    name:'Caraxès', epithet:'"Le Ver de Sang"',
+    name:'Caraxès', nameEn:'Caraxes', epithet:'"Le Ver de Sang"',
     status:'dead',
     rider:'Daemon Targaryen',
-    desc:'Dragon rouge vif au corps long et serpentin, aux ailes déchiquetées. Exceptionnellement agressif, il évoque un ver ailé monstrueux.',
+    desc:'[⬛ Noirs] Dragon rouge vif au corps long et serpentin, aux ailes déchiquetées. Exceptionnellement agressif, il évoque un ver ailé monstrueux.',
     detail:'Compagnon de Daemon Targaryen pendant des décennies. Il affronte Vhagar au-dessus du Lac-Œil-de-Dieu : les deux dragons s\'entretuent dans les eaux du lac. Caraxès survit un court moment après, blessé mortellement, avant de succomber sur les rives.',
     tags:['hotd']
   },
   {
     id:'syrax', cat:'dragon', series:['hotd'], emoji:'🐉', size:'Grand',
-    name:'Syrax', epithet:'"La Jument Jaune"',
+    name:'Syrax', nameEn:'Syrax', epithet:'"La Jument Jaune"',
     status:'dead',
     rider:'Rhaenyra Targaryen',
-    desc:'Dragon jaune doré de Rhaenyra, confinée trop souvent à Peyredragon. Nommée d\'après une déesse valyrienne.',
+    desc:'[⬛ Noirs] Dragon jaune doré de Rhaenyra, confinée trop souvent à Peyredragon. Nommée d\'après une déesse valyrienne.',
     detail:'Libérée lors de la Prise des Dragons à Port-Réal, elle déclenche un massacre parmi les candidats qui tentent de la monter. Elle périt dans les combats sans cavalier, affaiblie par des années de captivité relative.',
     tags:['hotd']
   },
   {
     id:'meleys', cat:'dragon', series:['hotd'], emoji:'🐉', size:'Grand',
-    name:'Meleys', epithet:'"L\'Écarlate"',
+    name:'Meleys', nameEn:'Meleys', epithet:'"L\'Écarlate"',
     status:'dead',
     rider:'Rhaenys Targaryen',
-    desc:'Dragon rouge vif aux cornes et crêtes roses, réputée pour sa vitesse exceptionnelle. Cavalière : Rhaenys Targaryen, la "Reine qui ne fut Jamais".',
+    desc:'[⬛ Noirs] Dragon rouge vif aux cornes et crêtes roses, réputée pour sa vitesse exceptionnelle. Cavalière : Rhaenys Targaryen, la "Reine qui ne fut Jamais".',
     detail:'Piégée à Rook\'s Rest par Aegon II et Aemond, elle affronte simultanément Vhagar et Sunfyre. Blessée mortellement, elle prend Rhaenys dans sa chute. Sunfyre sortira gravement mutilé de ce combat.',
     tags:['hotd']
   },
   {
     id:'sunfyre', cat:'dragon', series:['hotd'], emoji:'🐉', size:'Grand',
-    name:'Sunfyre', epithet:'"Le Plus Beau de Son Époque"',
+    name:'Sunfyre', nameEn:'Sunfyre', epithet:'"Le Plus Beau de Son Époque"',
     status:'dead',
     rider:'Aegon II Targaryen',
-    desc:'Dragon aux écailles dorées et rose pâle, réputé le plus beau dragon de Westeros. Souffle une flamme d\'or brillant.',
+    desc:'[🟩 Verts] Dragon aux écailles dorées et rose pâle, réputé le plus beau dragon de Westeros. Souffle une flamme d\'or brillant.',
     detail:'Grièvement blessé lors de la bataille de Rook\'s Rest contre Meleys, puis à nouveau à Driftmark. C\'est lui qui dévore Rhaenyra après la reddition. Il meurt de ses blessures peu après, affaibli par des mois de combat.',
     tags:['hotd']
   },
   {
     id:'arrax', cat:'dragon', series:['hotd'], emoji:'🐉', size:'Jeune',
-    name:'Arrax', epithet:'"Dragon de Lucerys"',
+    name:'Arrax', nameEn:'Arrax', epithet:'"Dragon de Lucerys"',
     status:'dead',
     rider:'Lucerys Velaryon',
-    desc:'Petit dragon blanc gris perle de Lucerys Velaryon, encore jeune et inexpérimenté au moment de la Danse.',
+    desc:'[⬛ Noirs] Petit dragon blanc gris perle de Lucerys Velaryon, encore jeune et inexpérimenté au moment de la Danse.',
     detail:'Tué par Vhagar au-dessus de la Baie des Naufrageurs lors de la mission diplomatique de Lucerys à Accalmie. L\'attaque est déclenchée par Aemond "Œil-de-Saphir" — la mort de Lucerys enflamme définitivement la Danse des Dragons.',
     tags:['hotd']
   },
   {
     id:'vermax', cat:'dragon', series:['hotd'], emoji:'🐉', size:'Jeune',
-    name:'Vermax', epithet:'"Dragon de Jacaerys"',
+    name:'Vermax', nameEn:'Vermax', epithet:'"Dragon de Jacaerys"',
     status:'dead',
     rider:'Jacaerys Velaryon',
-    desc:'Dragon vert de Jacaerys Velaryon. Compagnon du prince depuis son enfance, il l\'accompagne dans sa mission diplomatique dans le Nord.',
+    desc:'[⬛ Noirs] Dragon vert de Jacaerys Velaryon. Compagnon du prince depuis son enfance, il l\'accompagne dans sa mission diplomatique dans le Nord.',
     detail:'Périt lors de la Bataille des Bouchons (Gullet), submergé par des chaînes et des noyés des Triarchy. Sa mort entraîne celle de Jacaerys dans les eaux du Détroit.',
     tags:['hotd']
   },
   {
     id:'tessarion', cat:'dragon', series:['hotd'], emoji:'🐉', size:'Jeune',
-    name:'Tessarion', epithet:'"La Danseuse Bleue"',
+    name:'Tessarion', nameEn:'Tessarion', epithet:'"La Danseuse Bleue"',
     status:'dead',
     rider:'Daeron Targaryen',
-    desc:'Dragon bleu cobalt au ventre de bronze, remarquable pour sa grâce en vol. Cavalier : Daeron Targaryen, dit "le Vaillant".',
+    desc:'[🟩 Verts] Dragon bleu cobalt au ventre de bronze, remarquable pour sa grâce en vol. Cavalier : Daeron Targaryen, dit "le Vaillant".',
     detail:'Participat aux batailles du Côte-de-l\'Aigle. Blessée lors de la Deuxième Bataille de Tumbleton, elle agonise et est achevée par une flèche de miséricorde. Daeron périt au même moment.',
     tags:['hotd']
   },
   {
     id:'seasmoke', cat:'dragon', series:['hotd'], emoji:'🐉', size:'Moyen',
-    name:'Fumée de Mer', epithet:'"Le Dragon Argent"',
+    name:'Fumée de Mer', nameEn:'Seasmoke', epithet:'"Le Dragon Argent"',
     status:'dead',
     rider:'Laenor Velaryon · Addam de Hull',
-    desc:'Dragon gris argenté aux reflets de mer. D\'abord monté par Laenor Velaryon, il choisit ensuite Addam de Hull comme cavalier des sables.',
+    desc:'[⬛ Noirs] Dragon gris argenté aux reflets de mer. D\'abord monté par Laenor Velaryon, il choisit ensuite Addam de Hull comme cavalier des sables.',
     detail:'Périt lors de la Première Bataille de Tumbleton en affrontant Vhagar, Tessarion et Vermithor simultanément. Addam de Hull, prouvant sa loyauté envers les Noirs, l\'y conduit au sacrifice.',
     tags:['hotd']
   },
   {
     id:'moondancer', cat:'dragon', series:['hotd'], emoji:'🐉', size:'Jeune',
-    name:'Danselune', epithet:'"Dragon de Baela"',
+    name:'Danselune', nameEn:'Moondancer', epithet:'"Dragon de Baela"',
     status:'dead',
     rider:'Baela Targaryen',
-    desc:'Petit dragon vert argent, encore jeune lors de la Danse. Cavalière : Baela Targaryen, fille de Daemon.',
+    desc:'[⬛ Noirs] Petit dragon vert argent, encore jeune lors de la Danse. Cavalière : Baela Targaryen, fille de Daemon.',
     detail:'Affronte Sunfyre blessé lors de la bataille de Driftmark. Moondancer périt dans le combat malgré sa bravoure contre un dragon bien plus grand. Baela survit grièvement brûlée.',
     tags:['hotd']
   },
   {
     id:'dreamfyre', cat:'dragon', series:['hotd'], emoji:'🐉', size:'Grand',
-    name:'Songefeu', epithet:'"Dragon d\'Helaena"',
+    name:'Songefeu', nameEn:'Dreamfyre', epithet:'"Dragon d\'Helaena"',
     status:'dead',
     rider:'Helaena Targaryen',
-    desc:'Dragon bleu pâle aux ailes argentées. Liée à Helaena Targaryen, prophétesse et dresseuse de vers de soie.',
+    desc:'[⬛ Noirs] Dragon bleu pâle aux ailes argentées. Liée à Helaena Targaryen, prophétesse et dresseuse de vers de soie.',
     detail:'Enchaînée dans le Dragonmont lors de la Prise des Dragons, elle est libérée par les émeutiers. Sa rage provoque un effondrement du Dragonmont qui la tue. Helaena s\'était jetée de sa fenêtre quelques jours plus tôt.',
     tags:['hotd']
   },
   {
     id:'cannibal', cat:'dragon', series:['hotd'], emoji:'🐉', size:'Très grand',
-    name:'Le Cannibale', epithet:'"Le Dragon Sauvage"',
+    name:'Le Cannibale', nameEn:'The Cannibal', epithet:'"Le Dragon Sauvage"',
     status:'unknown',
     rider:'Aucun — indomptable',
-    desc:'Dragon sauvage noir de jais vivant depuis des générations dans les grottes de Peyredragon. Il tire son nom de son habitude de dévorer les œufs et les jeunes dragons.',
+    desc:'[🐉 Sauvage] Dragon sauvage noir de jais vivant depuis des générations dans les grottes de Peyredragon. Il tire son nom de son habitude de dévorer les œufs et les jeunes dragons.',
     detail:'Le plus ancien et le plus dangereux des dragons sauvages de Peyredragon. Aucun cavalier ne put jamais l\'approcher. Son sort après la Danse reste inconnu — certains disent qu\'il survécut et disparut vers l\'Est.',
     tags:['hotd']
   },
   {
     id:'sheepstealer', cat:'dragon', series:['hotd'], emoji:'🐉', size:'Moyen',
-    name:'Voleur de Moutons', epithet:'"L\'Ingrat"',
+    name:'Voleur de Moutons', nameEn:'Sheepstealer', epithet:'"L\'Ingrat"',
     status:'unknown',
     rider:'Nettles',
-    desc:'Dragon brun boueux et hostile, vivant sauvage à Peyredragon. Apprivoisé par Nettles grâce à des offrandes quotidiennes de moutons.',
+    desc:'[⬛ Noirs] Dragon brun boueux et hostile, vivant sauvage à Peyredragon. Apprivoisé par Nettles grâce à des offrandes quotidiennes de moutons.',
     detail:'Lié à la mystérieuse Nettles, dont on ne sait si elle avait du sang-dragon. Ils disparaissent ensemble vers l\'Est après la trahison supposée de Nettles. Leur destin reste l\'un des grands mystères de la Danse des Dragons.',
     tags:['hotd']
   },
@@ -1782,7 +1788,7 @@ const CREATURES = [
     name:"Aile d'Argent", epithet:'"L\'Aile d\'Argent"',
     status:'unknown',
     rider:'Ulf White',
-    desc:'Dragon gris argenté, anciennement monté par la reine Alysanne Targaryen. Lors de la Danse, choisi par Ulf White dit "Ulf le Blanc".',
+    desc:'[⬛ Noirs (traître)] Dragon gris argenté, anciennement monté par la reine Alysanne Targaryen. Lors de la Danse, choisi par Ulf White dit "Ulf le Blanc".',
     detail:'Survécut à la Danse des Dragons. Après la mort d\'Ulf, elle refusa tout nouveau cavalier et vécut sauvage près du lac Fishfeed pendant de nombreuses années, avant de disparaître.',
     tags:['hotd']
   },
@@ -1791,13 +1797,13 @@ const CREATURES = [
     name:"Nuage d'Orage", epithet:'"Dragon d\'Aegon le Jeune"',
     status:'dead',
     rider:'Aegon le Jeune (Aegon III)',
-    desc:'Très jeune dragon, monté par le petit Aegon lors de la fuite de Peyredragon après l\'exécution de Rhaenyra.',
+    desc:'[⬛ Noirs] Très jeune dragon, monté par le petit Aegon lors de la fuite de Peyredragon après l\'exécution de Rhaenyra.',
     detail:'Mortellement blessé lors de la fuite, il survit juste assez pour mettre Aegon en sécurité avant de succomber à ses blessures. Sa mort traumatise Aegon III, futur "Roi-Brise-Dragon" qui développe une phobie des dragons.',
     tags:['hotd']
   },
   {
     id:'shrykos', cat:'dragon', series:['hotd'], emoji:'🐉', size:'Jeune',
-    name:'Shrykos', epithet:'"Dragon de Jaehaerys"',
+    name:'Shrykos', nameEn:'Shrykos', epithet:'"Dragon de Jaehaerys"',
     status:'dead',
     rider:'Jaehaerys Targaryen (enfant)',
     desc:'Jeune dragon affecté au prince Jaehaerys, petit-fils de Viserys I et fils d\'Aegon II. Tué lors de la Prise des Dragons.',
@@ -1806,7 +1812,7 @@ const CREATURES = [
   },
   {
     id:'morghul', cat:'dragon', series:['hotd'], emoji:'🐉', size:'Jeune',
-    name:'Morghul', epithet:'"Dragon de Jaehaera"',
+    name:'Morghul', nameEn:'Morghul', epithet:'"Dragon de Jaehaera"',
     status:'dead',
     rider:'Jaehaera Targaryen (enfant)',
     desc:'Jeune dragon affecté à la princesse Jaehaera, sœur jumelle de Jaehaerys. Tué lors de la Prise des Dragons.',
@@ -1815,25 +1821,25 @@ const CREATURES = [
   },
   {
     id:'vermithor', cat:'dragon', series:['hotd'], emoji:'🐉', size:'Très grand',
-    name:'Vermithor', epithet:'"Le Vieux Roi"',
+    name:'Vermithor', nameEn:'Vermithor', epithet:'"Le Vieux Roi"',
     status:'dead',
     rider:'Hugh Marteau',
-    desc:'Dragon bronze aux flammes d\'une chaleur extrême, anciennement monté par Jaehaerys I dit le Vieux Roi. L\'un des plus grands dragons vivant lors de la Danse.',
+    desc:'[⬛ Noirs (traître)] Dragon bronze aux flammes d\'une chaleur extrême, anciennement monté par Jaehaerys I dit le Vieux Roi. L\'un des plus grands dragons vivant lors de la Danse.',
     detail:'Après des décennies sans cavalier, il est conquis par Hugh Marteau, un bâtard du sang-dragon. Hugh trahit les Noirs à Tumbleton. Vermithor périt lors de la Première Bataille de Tumbleton contre Seasmoke, Tessarion et les soldats.',
     tags:['hotd']
   },
   {
     id:'greyghost', cat:'dragon', series:['hotd'], emoji:'🐉', size:'Moyen',
-    name:'Fantôme Gris', epithet:'"Le Fantôme Gris"',
+    name:'Fantôme Gris', nameEn:'Grey Ghost', epithet:'"Le Fantôme Gris"',
     status:'dead',
     rider:'Aucun — sauvage',
-    desc:'Dragon blanc gris pâle, timide et solitaire, vivant dans les falaises du côté sudest de Peyredragon. Évitait les hommes et les autres dragons.',
+    desc:'[🐉 Sauvage] Dragon blanc gris pâle, timide et solitaire, vivant dans les falaises du côté sudest de Peyredragon. Évitait les hommes et les autres dragons.',
     detail:'Tué par le Cannibal dans une confrontation dans les airs au-dessus de l\'île de Peyredragon. Sa carcasse à moitié dévorée fut retrouvée dans la mer. Sa mort contribua à la panique qui s\'empara des partisans de Rhaenyra.',
     tags:['hotd']
   },
   {
     id:'meraxes', cat:'dragon', series:['lore'], emoji:'💀', size:'Très grand',
-    name:'Meraxes', epithet:'"Dragon de Rhaenys la Reine"',
+    name:'Meraxes', nameEn:'Meraxes', epithet:'"Dragon de Rhaenys la Reine"',
     status:'dead',
     rider:'Rhaenys Targaryen (la Conquérante)',
     desc:'L\'un des trois dragons de la Conquête d\'Aegon. Nommé d\'après l\'un des dieux valyriens. Monté par la reine Rhaenys, sœur-épouse d\'Aegon.',
@@ -1842,7 +1848,7 @@ const CREATURES = [
   },
   {
     id:'quicksilver', cat:'dragon', series:['lore'], emoji:'💀', size:'Moyen',
-    name:'Vif-Argent', epithet:'"Dragon d\'Aenys Ier"',
+    name:'Vif-Argent', nameEn:'Quicksilver', epithet:'"Dragon d\'Aenys Ier"',
     status:'dead',
     rider:'Aenys Ier Targaryen',
     desc:'Dragon blanc argenté d\'Aenys Ier, fils d\'Aegon le Conquérant. Réputé rapide mais moins puissant que Balerion.',
@@ -1851,7 +1857,7 @@ const CREATURES = [
   },
   {
     id:'dragon-egg-akotsk', cat:'dragon', series:['akotsk'], emoji:'🥚', size:'Inconnu',
-    name:'L\'Œuf de Dragon', epithet:'"Trésor de la Maison Targaryen"',
+    name:"L'Œuf de Dragon", nameEn:'Dragon Egg', epithet:'"Trésor de la Maison Targaryen"',
     status:'unknown',
     rider:'—',
     desc:'Dans A Knight of the Seven Kingdoms, des œufs de dragons persistent comme symboles précieux de la puissance Targaryen déchue — un siècle après la quasi-extinction des dragons.',
@@ -1862,7 +1868,7 @@ const CREATURES = [
   // ── LOUPS-GAROUS ──────────────────────────────────────────────────
   {
     id:'ghost', cat:'loup', series:['got'], emoji:'🐺', size:'Adulte',
-    name:'Fantôme', epithet:'"Le Loup Blanc"',
+    name:'Fantôme', nameEn:'Ghost', epithet:'"Le Loup Blanc"',
     status:'alive',
     rider:'Jon Snow',
     desc:'Loup-garou albinos aux yeux rouges de Jon Snow. Le seul pup mâle de la portée à ne pas être nommé immédiatement — comme Jon lui-même, il était l\'inattendu.',
@@ -1871,7 +1877,7 @@ const CREATURES = [
   },
   {
     id:'nymeria', cat:'loup', series:['got'], emoji:'🐺', size:'Adulte',
-    name:'Nymeria', epithet:'"La Louve d\'Arya"',
+    name:'Nymeria', nameEn:'Nymeria', epithet:'"La Louve d\'Arya"',
     status:'alive',
     rider:'Arya Stark',
     desc:'Louve-garou gris cendré d\'Arya Stark, nommée d\'après la reine guerrière Rhoynar qui conduisit son peuple vers Dorne. Chassée sur ordre de Cersei après avoir mordu Joffrey.',
@@ -1880,7 +1886,7 @@ const CREATURES = [
   },
   {
     id:'grey-wind', cat:'loup', series:['got'], emoji:'🐺', size:'Adulte',
-    name:'Vent Gris', epithet:'"Le Loup de Robb"',
+    name:'Vent Gris', nameEn:'Grey Wind', epithet:'"Le Loup de Robb"',
     status:'dead',
     rider:'Robb Stark',
     desc:'Loup-garou gris de Robb Stark. Compagnon de guerre du Jeune Loup, sa présence sur le champ de bataille terrorisait les ennemis des Stark.',
@@ -1889,7 +1895,7 @@ const CREATURES = [
   },
   {
     id:'lady', cat:'loup', series:['got'], emoji:'🐺', size:'Jeune',
-    name:'Lady', epithet:'"La Louve de Sansa"',
+    name:'Lady', nameEn:'Lady', epithet:'"La Louve de Sansa"',
     status:'dead',
     rider:'Sansa Stark',
     desc:'Louve-garou gris argenté de Sansa Stark, la plus douce et la plus noble de la portée. Tuée sur ordre de la reine Cersei après l\'incident de Joffrey.',
@@ -1898,7 +1904,7 @@ const CREATURES = [
   },
   {
     id:'summer', cat:'loup', series:['got'], emoji:'🐺', size:'Adulte',
-    name:'Été', epithet:'"Le Loup de Bran"',
+    name:'Été', nameEn:'Summer', epithet:'"Le Loup de Bran"',
     status:'dead',
     rider:'Bran Stark',
     desc:'Loup-garou brun gris de Bran Stark. Lié warg à Bran, Summer fut son ancre dans le monde physique pendant ses voyages spirituels.',
@@ -1918,7 +1924,7 @@ const CREATURES = [
   // ── FANTASTIQUE ──────────────────────────────────────────────────
   {
     id:'corbeau3yeux', cat:'fantastique', series:['got'], emoji:'🐦‍⬛', size:'Mystique',
-    name:'La Corneille à Trois Yeux', epithet:'"Brynden Rivers — Bâtard Targaryen"',
+    name:'La Corneille à Trois Yeux', nameEn:'Three-Eyed Raven', epithet:'"Brynden Rivers — Bâtard Targaryen"',
     status:'dead',
     rider:'—',
     desc:'Entité mystique fusionnée à l\'arbre-cœur de la Caverne depuis des siècles. Il guide Bran Stark dans ses visions depuis l\'enfance. Son identité : Brynden Rivers, fils bâtard d\'Aegon IV Targaryen — l\'un des "Grands Bâtards". Aucune filiation Stark.',
@@ -1927,7 +1933,7 @@ const CREATURES = [
   },
   {
     id:'marcheurs', cat:'fantastique', series:['got'], emoji:'❄️', size:'Mystique',
-    name:'Les Marcheurs Blancs', epithet:'"Les Autres"',
+    name:'Les Marcheurs Blancs', nameEn:'White Walkers', epithet:'"Les Autres"',
     status:'dead',
     rider:'—',
     desc:'Créatures de glace et de magie créées par les Enfants de la Forêt il y a 8 000 ans. Ils transforment les morts en Wights et les commandent.',
@@ -1936,7 +1942,7 @@ const CREATURES = [
   },
   {
     id:'wights', cat:'fantastique', series:['got'], emoji:'💀', size:'Variable',
-    name:'Les Wights', epithet:'"Armée des Morts"',
+    name:'Les Wights', nameEn:'Wights', epithet:'"Armée des Morts"',
     status:'dead',
     rider:'—',
     desc:'Morts ressuscités par les Marcheurs Blancs. Hommes, animaux, géants — tout corps mort peut être reanimé. Yeux bleus, force surnaturelle.',
@@ -1945,7 +1951,7 @@ const CREATURES = [
   },
   {
     id:'geants', cat:'fantastique', series:['got'], emoji:'🦣', size:'Colossal',
-    name:'Les Géants', epithet:'"Fils de la Forêt Vierge"',
+    name:'Les Géants', nameEn:'Giants', epithet:'"Fils de la Forêt Vierge"',
     status:'dead',
     rider:'—',
     desc:'Êtres humanoïdes de 4 à 6 mètres de haut, vivant au-delà du Mur. Ils parlent la Vieille Langue et coexistent avec les Sauvageons.',
@@ -1954,7 +1960,7 @@ const CREATURES = [
   },
   {
     id:'mammouth', cat:'fantastique', series:['got'], emoji:'🦣', size:'Colossal',
-    name:'Les Mammouths', epithet:'"Montures des Géants"',
+    name:'Les Mammouths', nameEn:'Mammoths', epithet:'"Montures des Géants"',
     status:'unknown',
     rider:'—',
     desc:'Mammouths laineux de grande taille utilisés comme montures de guerre par les géants au-delà du Mur. Vus lors de l\'attaque de Châteaunoir.',
@@ -1963,7 +1969,7 @@ const CREATURES = [
   },
   {
     id:'centaures', cat:'fantastique', series:['lore'], emoji:'🐴', size:'Mystique',
-    name:'Les Êtres de la Forêt Vierge', epithet:'"Créatures Légendaires"',
+    name:'Les Êtres de la Forêt Vierge', nameEn:'Forest Creatures', epithet:'"Créatures Légendaires"',
     status:'unknown',
     rider:'—',
     desc:'Diverses créatures mentionnées dans les légendes de Westeros : lampreys géants, serpents de mer, hommes-poissons des Îles d\'Ibben, et autres êtres dont l\'existence reste incertaine.',
@@ -1972,7 +1978,7 @@ const CREATURES = [
   },
   {
     id:'krakengeant', cat:'fantastique', series:['got','lore'], emoji:'🦑', size:'Légendaire',
-    name:'Le Kraken Géant', epithet:'"Dieu des Profondeurs"',
+    name:'Le Kraken Géant', nameEn:'Giant Kraken', epithet:'"Dieu des Profondeurs"',
     status:'unknown',
     rider:'—',
     desc:'Créature des profondeurs marines, emblème de la Maison Greyjoy. Des témoins affirment avoir vu de vrais krakens géants attaquer des navires au large des Îles de Fer.',
@@ -1981,7 +1987,7 @@ const CREATURES = [
   },
   {
     id:'basilic', cat:'fantastique', series:['lore'], emoji:'🦎', size:'Grand',
-    name:'Les Basilics', epithet:'"Serpents des Îles"',
+    name:'Les Basilics', nameEn:'Basilisks', epithet:'"Serpents des Îles"',
     status:'unknown',
     rider:'—',
     desc:'Serpents reptiliens géants des Îles Basilic à l\'est d\'Essos. Dotés de pattes à la différence des dragons. Certains disent qu\'ils peuvent pétrifier par le regard.',
@@ -1990,7 +1996,7 @@ const CREATURES = [
   },
   {
     id:'enfants-foret', cat:'fantastique', series:['got'], emoji:'🌿', size:'Petit',
-    name:'Les Enfants de la Forêt', epithet:'"Premiers Habitants de Westeros"',
+    name:'Les Enfants de la Forêt', nameEn:'Children of the Forest', epithet:'"Premiers Habitants de Westeros"',
     status:'dead',
     rider:'—',
     desc:'Êtres humanoïdes de petite taille, aux yeux dorés ou verts. Ils peuplaient Westeros avant l\'arrivée des Premiers Hommes. Créateurs des Marcheurs Blancs.',
@@ -2001,7 +2007,7 @@ const CREATURES = [
   // ── ANIMAUX ──────────────────────────────────────────────────
   {
     id:'corbeaux', cat:'animal', series:['got','hotd','akotsk'], emoji:'🦅',
-    name:'Les Corbeaux Messagers', epithet:'"Voix du Royaume"',
+    name:'Les Corbeaux Messagers', nameEn:'Ravens', epithet:'"Voix du Royaume"',
     status:'alive',
     rider:'—',
     desc:'Corbeaux entraînés porteurs de messages entre les châteaux et forteresses de Westeros. La Garde de Nuit en fait un usage intensif. Châteaunoir en compte des centaines.',
@@ -2010,7 +2016,7 @@ const CREATURES = [
   },
   {
     id:'chevaux-dothraki', cat:'animal', series:['got'], emoji:'🐎',
-    name:'Les Destriers Dothraki', epithet:'"Chevaux des Plaines"',
+    name:'Les Destriers Dothraki', nameEn:'Dothraki Horses', epithet:'"Chevaux des Plaines"',
     status:'alive',
     rider:'—',
     desc:'Chevaux robustes et endurants des plaines de l\'Essos, élevés et dressés par les Dothraki. La cavalerie Dothraki est réputée la meilleure du monde connu.',
@@ -2019,7 +2025,7 @@ const CREATURES = [
   },
   {
     id:'ours-combat', cat:'animal', series:['got'], emoji:'🐻',
-    name:'L\'Ours de Combat', epithet:'"Bête de l\'Arène"',
+    name:"L'Ours de Combat", nameEn:'Combat Bear', epithet:'"Bête de l\'Arène"',
     status:'dead',
     rider:'—',
     desc:'Ours géant utilisé dans l\'arène de combat de Harrenhal lors de la capture de Jaime et Brienne. Brienne y affronte l\'ours sans arme jusqu\'à l\'arrivée de Jaime.',
@@ -2028,7 +2034,7 @@ const CREATURES = [
   },
   {
     id:'lion-lannister', cat:'animal', series:['got','hotd'], emoji:'🦁',
-    name:'Le Lion — Emblème Lannister', epithet:'"Le Lion d\'Or"',
+    name:'Le Lion — Emblème Lannister', nameEn:'Lion', epithet:'"Le Lion d\'Or"',
     status:'alive',
     rider:'—',
     desc:'Animal héraldique par excellence des Lannister de Castral Roc. "Entends-moi rugir" est leur devise. Des lions existent à Westeros, notamment en Essos.',
@@ -2037,7 +2043,7 @@ const CREATURES = [
   },
   {
     id:'cerf-baratheon', cat:'animal', series:['got'], emoji:'🦌',
-    name:'Le Cerf — Emblème Baratheon', epithet:'"La Biche Couronnée"',
+    name:'Le Cerf — Emblème Baratheon', nameEn:'Stag', epithet:'"La Biche Couronnée"',
     status:'alive',
     rider:'—',
     desc:'Animal héraldique de la Maison Baratheon d\'Accalmie. Robert Baratheon aimait la chasse au cerf — une ironie tragique puisqu\'une blessure lors d\'une chasse au sanglier causa sa mort.',
@@ -2046,7 +2052,7 @@ const CREATURES = [
   },
   {
     id:'pieuvre-greyjoy', cat:'animal', series:['got','hotd'], emoji:'🦑',
-    name:'La Pieuvre — Emblème Greyjoy', epithet:'"Le Kraken d\'Or"',
+    name:'La Pieuvre — Emblème Greyjoy', nameEn:'Kraken', epithet:'"Le Kraken d\'Or"',
     status:'alive',
     rider:'—',
     desc:'La pieuvre (ou kraken) est l\'emblème héraldique des Greyjoy de Pyk. Elle symbolise leur maîtrise des mers et leur nature prédatrice.',
@@ -2055,7 +2061,7 @@ const CREATURES = [
   },
   {
     id:'faucon-arryn', cat:'animal', series:['got'], emoji:'🦅',
-    name:'Le Faucon — Emblème Arryn', epithet:'"Le Faucon du Val"',
+    name:'Le Faucon — Emblème Arryn', nameEn:'Falcon', epithet:'"Le Faucon du Val"',
     status:'alive',
     rider:'—',
     desc:'Faucon lunaire blanc sur fond bleu ciel, emblème de la Maison Arryn du Val d\'Arryn. "Haut Comme l\'Honneur" est leur devise.',
@@ -2064,7 +2070,7 @@ const CREATURES = [
   },
   {
     id:'poulpe-velaryon', cat:'animal', series:['hotd'], emoji:'🐙',
-    name:'La Pieuvre — Emblème Velaryon', epithet:'"Seigneurs des Marées"',
+    name:'La Pieuvre — Emblème Velaryon', nameEn:'Kraken', epithet:'"Seigneurs des Marées"',
     status:'alive',
     rider:'—',
     desc:'Emblème de la puissante Maison Velaryon de Driftmark, famille de marins et amiraux. Leur flotte est la plus grande de Westeros.',
@@ -2073,7 +2079,7 @@ const CREATURES = [
   },
   {
     id:'cheval-dunk', cat:'animal', series:['akotsk'], emoji:'🐎',
-    name:'Châtaigne', epithet:'"Jument de Ser Duncan"',
+    name:'Châtaigne', nameEn:'Chestnut', epithet:'"Jument de Ser Duncan"',
     status:'unknown',
     rider:'Ser Duncan le Grand',
     desc:'La jument bai de Ser Duncan le Grand, chevalier errant et protagoniste de A Knight of the Seven Kingdoms. Fidèle compagne de ses pérégrinations à travers Westeros.',
@@ -2082,7 +2088,7 @@ const CREATURES = [
   },
   {
     id:'cheval-egg', cat:'animal', series:['akotsk'], emoji:'🐎',
-    name:'Monture d\'Egg', epithet:'"Destrier du Prince Secret"',
+    name:"Monture d'Egg", nameEn:"Egg's Horse", epithet:'"Destrier du Prince Secret"',
     status:'unknown',
     rider:'Aegon Targaryen (Egg)',
     desc:'Cheval du jeune Aegon Targaryen, qui parcourt Westeros incognito sous le nom d\'"Egg", écuyer de Ser Duncan. Son cheval noble trahit parfois son rang.',
@@ -2091,7 +2097,7 @@ const CREATURES = [
   },
   {
     id:'hippocampe', cat:'animal', series:['hotd','lore'], emoji:'🐟',
-    name:'Les Hippocampes', epithet:'"Créatures Marines Légendaires"',
+    name:'Les Hippocampes', nameEn:'Seahorse', epithet:'"Créatures Marines Légendaires"',
     status:'unknown',
     rider:'—',
     desc:'Créatures mi-cheval mi-poisson mentionnées dans les légendes des marins de Westeros et d\'Essos. Certains maesters les considèrent comme de purs mythes.',
@@ -2100,22 +2106,13 @@ const CREATURES = [
   },
   {
     id:'sanglier', cat:'animal', series:['got'], emoji:'🐗',
-    name:'Le Sanglier Royal', epithet:'"Tueur de Rois"',
+    name:'Le Sanglier Royal', nameEn:'Royal Boar', epithet:'"Tueur de Rois"',
     status:'dead',
     rider:'—',
     desc:'Sanglier ayant mortellement blessé le roi Robert Baratheon lors d\'une partie de chasse royale, précipitant la mort du souverain et les événements de la saison 1.',
     detail:'Robert, affaibli par le vin (que Lancel Lannister lui avait versé en quantités excessives sur ordre de Cersei), fut renversé et éventré par ce sanglier. Sa blessure s\'infecta et il mourut après avoir nommé Ned Stark régent. Un simple porc changea le destin du royaume.',
     tags:['got']
   },
-  {
-    id:'scorpion-mantis', cat:'animal', series:['got'], emoji:'🦂',
-    name:'Les Scorpions de Guerre', epithet:'"Engins Anti-Dragons"',
-    status:'unknown',
-    rider:'—',
-    desc:'Grandes arbalètes de siège conçues par Qyburn pour abattre les dragons de Daenerys. Utilisées par la flotte d\'Euron Greyjoy pour tuer Rhaegal.',
-    detail:'Technologie militaire révolutionnaire qui change la donne face aux dragons. Qyburn les fait installer sur tous les navires et sur les remparts de Port-Réal. Leur efficacité partielle (Rhaegal tué, Drogon blessé) prouve que les dragons ne sont pas invincibles.',
-    tags:['got']
-  }
 ];
 
 // ══════════════════════════════════════════
@@ -2160,10 +2157,16 @@ function buildCard(c) {
       ${sizeHtml}
       <span class="card-emoji">${c.emoji}</span>
       <div class="card-body">
-        <div class="card-name">${c.name}</div>
+        ${(()=>{
+          const d = c.desc||'';
+          const fn = d.startsWith('[⬛ Noirs') ? 'noirs' : d.startsWith('[🟩 Verts') ? 'verts' : d.startsWith('[🐉 Sauvage') ? 'sauvage' : null;
+          const fl = d.startsWith('[⬛ Noirs (traître)') ? '⬛ Noirs — Traître' : d.startsWith('[⬛ Noirs') ? '⬛ Noirs' : d.startsWith('[🟩 Verts') ? '🟩 Verts' : d.startsWith('[🐉 Sauvage') ? '🐉 Sauvage' : null;
+          return fn ? `<div style="text-align:center"><span class="faction-badge faction-${fn}">${fl}</span></div>` : '';
+        })()}
+        <div class="card-name">${c.name}${c.nameEn ? '<span style="font-size:.72em;opacity:.4;font-family:&quot;EB Garamond&quot;,serif;font-style:italic"> ('+c.nameEn+')</span>' : ''}</div>
         ${c.epithet ? `<div class="card-epithet">${c.epithet}</div>` : ''}
         <div class="card-tags">${seriesTags}</div>
-        <div class="card-desc">${c.desc}</div>
+        <div class="card-desc">${c.desc.replace(/^\[.*?\]\s*/, '')}</div>
         <div class="card-divider"></div>
         <div class="card-detail">${c.detail}</div>
         ${riderHtml}
