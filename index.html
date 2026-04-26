@@ -52,7 +52,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;0,600&display=swap" rel="stylesheet">
 <style>
-:root{--gold:#c9a84c;--gold-l:#e8d08a;--gold-d:#7a5c1e;--crimson:#8b1a1a;--parch:#f2e4c0;--parch-m:#d9c48a;--parch-d:#c4a85a;--stone:#1a1508;--panel:rgba(20,15,5,0.97);--border:rgba(201,168,76,0.2);--border-b:rgba(201,168,76,0.5);--c-aube:#4a9a7a;--c-hiver:#7ab0d4;--c-heros:#c9a84c;--c-andal:#7a90c0;--c-valyria:#d07840;--c-conquete:#c94c4c;--c-targaryen:#b03030;--c-danse:#e05050;--c-rebellion:#7090b0;--c-got:#a04040;--c-dragon:#c94c4c;--c-loup:#7ab0d4;--c-fantastique:#9a7ac9;--c-animal:#7ab878}
+:root{--gold:#c9a84c;--gold-l:#e8d08a;--gold-d:#7a5c1e;--crimson:#8b1a1a;--parch:#f2e4c0;--parch-m:#d9c48a;--parch-d:#c4a85a;--stone:#1a1508;--panel:rgba(20,15,5,0.97);--border:rgba(201,168,76,0.2);--border-b:rgba(201,168,76,0.5);--c-aube:#4a9a7a;--c-hiver:#7ab0d4;--c-heros:#c9a84c;--c-andal:#7a90c0;--c-valyria:#d07840;--c-conquete:#c94c4c;--c-targaryen:#b03030;--c-danse:#e05050;--c-rebellion:#7090b0;--c-got:#a04040;--c-aptargaryen:#802020;--c-dragon:#c94c4c;--c-loup:#7ab0d4;--c-fantastique:#9a7ac9;--c-animal:#7ab878}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{user-select:none;-webkit-user-select:none;background:var(--stone);background-image:radial-gradient(ellipse 70% 35% at 50% 0%,rgba(120,20,20,0.14) 0%,transparent 55%);min-height:100vh;font-family:'EB Garamond',serif;color:var(--parch);overflow-x:hidden}
 /* HEADER */
@@ -1123,6 +1123,7 @@ button.pill[data-h="Autre"].active{background:rgba(80,65,35,.38);border-color:#d
   <button class="era-pill ep-conquete"      data-era="conquete">Conquête d'Aegon</button>
   <button class="era-pill ep-targaryen"     data-era="targaryen">Rois Targaryen</button>
   <button class="era-pill ep-danse"         data-era="danse">Danse des Dragons</button>
+  <button class="era-pill ep-aptargaryen"  data-era="aptargaryen">Targaryen tardif</button>
   <button class="era-pill ep-rebellion"     data-era="rebellion">Rébellion de Robert</button>
   <button class="era-pill ep-got"           data-era="got">Le Trône de Fer</button>
 </nav>
@@ -1249,7 +1250,7 @@ button.pill[data-h="Autre"].active{background:rgba(80,65,35,.38);border-color:#d
       <div class="event-card">
         <span class="event-date">114 avC</span>
         <div class="event-title">La Prophétie de Daenys — Les Targaryen fuient à Peyredragon</div>
-        <div class="event-summary">Daenys la Rêveuse prophétise la destruction de Valyria. Son père Lord Aenar transfère toute la famille à Peyredragon avec cinq dragons, dont Balerion le Terreur Noire.</div>
+        <div class="event-summary">Daenys la Rêveuse prophétise la destruction de Valyria. Son père Lord Aenar transfère toute la famille à Peyredragon avec cinq dragons, dont Balerion la Terreur Noire.</div>
         <div class="event-tags"><span class="etag maj">Prophétie</span><span class="etag">Targaryen</span><span class="etag">Peyredragon</span></div>
       </div>
     </div>
@@ -1474,8 +1475,9 @@ const ERAS = [
   {id:'andal',     label:'Invasion Andal',        clr:'#7a90c0', rgb:'122,144,192', s:22, e:32 },
   {id:'valyria',   label:'Valyria',               clr:'#d07840', rgb:'208,120,64',  s:32, e:45 },
   {id:'conquete',  label:"Conquête d'Aegon",      clr:'#c94c4c', rgb:'201,76,76',   s:45, e:50 },
-  {id:'targaryen', label:'Rois Targaryen',         clr:'#b03030', rgb:'176,48,48',   s:50, e:68 },
-  {id:'danse',     label:'Danse des Dragons',      clr:'#e05050', rgb:'224,80,80',   s:68, e:74 },
+  {id:'targaryen', label:'Rois Targaryen',         clr:'#b03030', rgb:'176,48,48',   s:50, e:59 },
+  {id:'danse',     label:'Danse des Dragons',      clr:'#e05050', rgb:'224,80,80',   s:59, e:67 },
+  {id:'aptargaryen',label:'Targaryen tardif',      clr:'#902020', rgb:'144,32,32',   s:67, e:74 },
   {id:'rebellion', label:'Rébellion de Robert',    clr:'#7090b0', rgb:'112,144,176', s:74, e:82 },
   {id:'got',       label:'Le Trône de Fer',        clr:'#a04040', rgb:'160,64,64',   s:82, e:100},
 ];
@@ -1501,14 +1503,14 @@ const EVENTS = [
   {era:'conquete',  p:49,  date:'1 apC',         lbl:'Couronnement Aegon Ier',   maj:true,  above:false, tickH:42 },
   {era:'targaryen', p:52,  date:'42 apC',        lbl:'Maegor le Cruel',          maj:false, above:true,  tickH:60 },
   {era:'targaryen', p:57,  date:'101 apC',       lbl:'Grand Conseil',            maj:true,  above:false, tickH:38 },
-  {era:'targaryen', p:61,  date:'≈ 209 apC',     lbl:'Dunk & Egg',               maj:false, above:true,  tickH:50 },
-  {era:'targaryen', p:66,  date:'262 apC',       lbl:'Aerys II — Roi Fou',       maj:true,  above:false, tickH:38 },
-  {era:'danse',     p:69,  date:'129 apC',       lbl:'Noirs vs Verts',           maj:true,  above:true,  tickH:90 },
-  {era:'danse',     p:71,  date:'130 apC',       lbl:'Lac-Œil-de-Dieu',         maj:true,  above:false, tickH:38 },
-  {era:'danse',     p:73,  date:'131 apC',       lbl:'Extinction dragons',       maj:true,  above:true,  tickH:65 },
-  {era:'rebellion', p:75,  date:'282 apC',       lbl:'Enlèvement Lyanna',        maj:true,  above:false, tickH:38 },
-  {era:'rebellion', p:78,  date:'283 apC',       lbl:'Bataille du Trident',      maj:true,  above:true,  tickH:75 },
-  {era:'rebellion', p:80,  date:'283 apC',       lbl:'Sac de Port-Réal',         maj:true,  above:false, tickH:38 },
+  {era:'aptargaryen', p:69,  date:'≈ 209 apC',     lbl:'Dunk & Egg',               maj:false, above:true,  tickH:50 },
+  {era:'aptargaryen', p:70,  date:'262 apC',       lbl:'Aerys II — Roi Fou',       maj:true,  above:false, tickH:38 },
+  {era:'danse',     p:60,  date:'129 apC',       lbl:'Noirs vs Verts',           maj:true,  above:true,  tickH:90 },
+  {era:'danse',     p:63,  date:'130 apC',       lbl:'Lac-Œil-de-Dieu',         maj:true,  above:false, tickH:38 },
+  {era:'danse',     p:65,  date:'131 apC',       lbl:'Extinction dragons',       maj:true,  above:true,  tickH:65 },
+  {era:'rebellion', p:77,  date:'282 apC',       lbl:'Enlèvement Lyanna',        maj:true,  above:false, tickH:38 },
+  {era:'rebellion', p:79,  date:'283 apC',       lbl:'Bataille du Trident',      maj:true,  above:true,  tickH:75 },
+  {era:'rebellion', p:81,  date:'283 apC',       lbl:'Sac de Port-Réal',         maj:true,  above:false, tickH:38 },
   {era:'got',       p:84,  date:'298 apC',       lbl:'Ned Stark exécuté',        maj:true,  above:true,  tickH:90 },
   {era:'got',       p:87,  date:'300 apC',       lbl:'Noces Pourpres',           maj:true,  above:false, tickH:38 },
   {era:'got',       p:91,  date:'305 apC',       lbl:'Grand Septe détruit',      maj:false, above:true,  tickH:60 },
@@ -1741,7 +1743,7 @@ const CREATURES = [
     status:'alive',
     rider:'Daenerys Targaryen',
     desc:'Le plus grand et le plus sauvage des trois dragons de Daenerys, nommé en hommage à Khal Drogo. Entièrement noir, cracheur de flammes rouge sang.',
-    detail:'Survivant unique des trois dragons de Daenerys, il détruit le Trône de Fer après l\'assassinat de sa maîtresse et s\'envole vers l\'Est avec son corps. Sa couleur noire évoque Balerion le Terreur Noire.',
+    detail:'Survivant unique des trois dragons de Daenerys, il détruit le Trône de Fer après l\'assassinat de sa maîtresse et s\'envole vers l\'Est avec son corps. Sa couleur noire évoque Balerion la Terreur Noire.',
     tags:['got','lore']
   },
   {
@@ -1764,7 +1766,7 @@ const CREATURES = [
   },
   {
     id:'balerion', cat:'dragon', series:['hotd','lore'], emoji:'💀', size:'Légendaire',
-    name:'Balerion', nameEn:'Balerion the Black Dread', epithet:'"Le Terreur Noire"',
+    name:'Balerion', nameEn:'Balerion the Black Dread', epithet:'"La Terreur Noire"',
     status:'dead',
     rider:'Aegon le Conquérant · Viserys I',
     desc:'Le plus grand dragon de l\'histoire de Westeros. Noir comme la nuit, ses flammes dorées fondaient le fer et la pierre. Il forgea le Trône de Fer.',
@@ -4830,7 +4832,7 @@ var QZ_DATA={
     {q:"Qu\u2019est-ce que le Trident\u00a0?",a:["Un fleuve","Une cr\u00e9ature","Une \u00e9poque"],ok:0,expl:"Le Trident est un fleuve de Westeros. C\u2019est sur ses rives que Robert Baratheon affronta Rhaegar Targaryen en combat singulier."},
     {q:"De qui Duncan le Grand est-il l\u2019\u00e9cuyer\u00a0?",a:["Allan de l\u2019Arbre-Saul","Arly de l\u2019Arbre-Sous","Arlan de l\u2019Arbre-Sous"],ok:2,expl:"Dunk est l\u2019ancien \u00e9cuyer de ser Arlan de l\u2019Arbre-Sous, dont il a h\u00e9rit\u00e9 le cheval et l\u2019armure."},
     {q:"Egg (Aegon V Targaryen) est-il\u00a0?",a:["Le grand-p\u00e8re du roi fou (Aerys II Targaryen)","L\u2019arri\u00e8re-grand-p\u00e8re du roi fou (Aerys II Targaryen)","Aucun des deux"],ok:0,expl:"Aegon V (Egg) est le grand-p\u00e8re d\u2019Aerys II le Fou. Son fils Jaehaerys II puis son petit-fils Aerys II lui succ\u00e8dent."},
-    {q:"Daenerys et Jon Snow sont\u00a0?",a:["\u0152ur et fr\u00e8re","Cousine et cousin","Tante et neveu"],ok:2,expl:"Jon Snow est Aegon Targaryen, fils de Rhaegar (fr\u00e8re de Daenerys). Jon est donc le neveu de Daenerys."}
+    {q:"Daenerys et Jon Snow sont\u00a0?",a:["S\u0153ur et fr\u00e8re","Cousine et cousin","Tante et neveu"],ok:2,expl:"Jon Snow est Aegon Targaryen, fils de Rhaegar (fr\u00e8re de Daenerys). Jon est donc le neveu de Daenerys."}
   ]
 };
 var QZ_RESULTS={
