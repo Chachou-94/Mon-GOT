@@ -1,28 +1,59 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" id="html-root">
 <head>
 <meta charset="UTF-8">
-<title>Mentions légales</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mentions légales — Game of Thrones Encyclopédie</title>
+
+<!-- HREFLANG SEO -->
+<link rel="alternate" hreflang="fr"        href="https://got-dragon.github.io/Game-Of-Thrones-encyclopedie-ultime/mentions-legales.html">
+<link rel="alternate" hreflang="en"        href="https://got-dragon.github.io/Game-Of-Thrones-encyclopedie-ultime/mentions-legales.html?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://got-dragon.github.io/Game-Of-Thrones-encyclopedie-ultime/mentions-legales.html">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;1,400&display=swap');
+  :root{--gold:#c9a84c;--gold-d:rgba(201,168,76,.5);--bg:#0a0702;--parch:rgba(242,228,192,.85)}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--parch);font-family:'EB Garamond',serif;min-height:100vh;padding:3rem 1.5rem}
+  .wrap{max-width:700px;margin:0 auto}
+  h1{font-family:'Cinzel',serif;font-size:clamp(1.1rem,3vw,1.6rem);color:var(--gold);margin-bottom:1.5rem;letter-spacing:.06em}
+  h2{font-family:'Cinzel',serif;font-size:.9rem;color:var(--gold);margin:1.8rem 0 .6rem;letter-spacing:.08em;text-transform:uppercase}
+  p{font-size:1rem;line-height:1.7;margin-bottom:.7rem;color:rgba(242,228,192,.75)}
+  ul{padding-left:1.4rem;margin-bottom:.7rem}
+  li{font-size:1rem;line-height:1.7;color:rgba(242,228,192,.75);margin-bottom:.25rem}
+  a{color:var(--gold);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{display:inline-block;margin-bottom:2rem;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-d);border:1px solid var(--gold-d);padding:.35rem .9rem;transition:color .2s,border-color .2s}
+  .back:hover{color:var(--gold);border-color:var(--gold)}
+  /* Lang switcher */
+  #got-lang-sw{position:fixed;top:1rem;right:1rem;z-index:20}
+  #got-lang-btn{background:rgba(10,7,2,.9);border:1px solid rgba(201,168,76,.4);border-radius:4px;cursor:pointer;padding:.3rem .4rem;transition:border-color .2s,transform .15s;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.5);line-height:0}
+  #got-lang-btn:hover{border-color:var(--gold);transform:scale(1.08)}
+</style>
 </head>
 <body>
 
-<h1>Mentions légales et Conditions d’utilisation</h1>
+<div class="wrap">
 
-<p>© Lina et Karim Touré – Tous droits réservés</p>
+  <a href="index.html" class="back" data-i18n="btn.back">← Retour</a>
 
-<p>Tout contenu publié sur ce site est protégé par le droit d’auteur.</p>
+  <h1 data-i18n="legal.title">Mentions légales et Conditions d'utilisation</h1>
 
-<p>Reproduction interdite sans autorisation écrite.</p>
+  <p>© Lina et Karim Touré – <span data-i18n="legal.rights">Tous droits réservés</span></p>
+  <p data-i18n="legal.p1">Tout contenu publié sur ce site est protégé par le droit d'auteur.</p>
+  <p data-i18n="legal.p2">Reproduction interdite sans autorisation écrite.</p>
+  <p data-i18n="legal.p3">Toute citation doit inclure un lien vers ce site.</p>
 
-<p>Toute citation doit inclure un lien vers ce site.</p>
+  <h2 data-i18n="legal.licence.title">Licence</h2>
+  <p data-i18n="legal.licence.intro">Ce contenu est partagé sous licence CC BY-NC-ND :</p>
+  <ul>
+    <li data-i18n="legal.licence.li1">Autorisation de partage avec mention de l'auteur</li>
+    <li data-i18n="legal.licence.li2">Pas de modification</li>
+    <li data-i18n="legal.licence.li3">Pas d'usage commercial</li>
+  </ul>
 
-<h2>Licence</h2>
-<p>Ce contenu est partagé sous licence CC BY-NC-ND :</p>
-<ul>
-<li>Autorisation de partage avec mention de l’auteur</li>
-<li>Pas de modification</li>
-<li>Pas d’usage commercial</li>
-</ul>
+</div>
 
+<script src="lang.js"></script>
 </body>
 </html>
